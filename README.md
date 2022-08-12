@@ -26,4 +26,4 @@ O sistema deve ser capaz de solucionar o problema de gestão de estoque e vendas
 ## **Integrantes do projeto:**
 - Eduardo Dezena Gonçalves
 - Guilherme Grego Santos
--
+- Victor Gonçalves Lima
