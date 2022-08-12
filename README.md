@@ -18,12 +18,12 @@ O sistema deve ser capaz de solucionar o problema de gestão de estoque e vendas
 ## **Tecnologias Utilizadas**
 - JavaScript (versão)
 - MySQL 8
-- NodeJs (versão)
+- NodeJs 16.16
 - HTML 5
 - CSS 3
-- (Servidor)
+- Express
 
 ## **Integrantes do projeto:**
 - Eduardo Dezena Gonçalves
--
+- Guilherme Grego Santos
 -
