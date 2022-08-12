@@ -10,8 +10,8 @@ O sistema deve ser capaz de solucionar o problema de gestão de estoque e vendas
 
 ## Usuários:
 
-- Funcionário
-- Gerente
+- Gerente: reponsável pela gestão do estoque e dos funcionários da loja.
+- Funcionário: responsável pela venda dos produtos. 
 
 ## **Estrutura de diretório**
 
