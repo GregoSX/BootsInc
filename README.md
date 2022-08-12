@@ -23,7 +23,7 @@ O sistema deve ser capaz de solucionar o problema de gestão de estoque e vendas
 - CSS 3
 - Express
 
-## **Integrantes do projeto:**
+## **Desenvolvedores:**
 - Eduardo Dezena Gonçalves
 - Guilherme Grego Santos
 - Victor Gonçalves Lima
