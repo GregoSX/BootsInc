@@ -5,7 +5,7 @@
 # Boots Inc.
 
 ## **Descrição**:
-Sistema para a loja de calçados Boots Inc. O sistema deve ser capaz de solucionar o problema de gestão de estoque e vendas da loja. É outorgado ao sistema as funcionalidades de CRUD de produtos, clientes, funcionários, vendas e pedidos.
+Sistema para a loja de calçados Boots Inc. O sistema deve ser capaz de solucionar o problema de gestão de estoque e vendas da loja. É outorgado ao sistema as funcionalidades de gestão de pedidos, vendas e controle de estoque. Ao Gerente é disponível todas as funcionalidades do sistema. Ao vendedor é disponível as funcionalidades de clientes e pedidos. Ao caixa é disponível as funcionalidades de clientes, vendas e produtos.
 
 ## Usuários:
 
