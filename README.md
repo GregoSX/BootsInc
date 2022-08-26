@@ -5,14 +5,12 @@
 <h1> <b> Boots Inc. </b> </h1>
 
 <h2> <b> Descrição </b> </h2>
-<hr>
 <p> 
     Sistema para a loja de calçados Boots Inc. O sistema deve ser capaz de solucionar o problema de gestão de estoque e vendas da loja. É outorgado ao sistema as funcionalidades de gestão de pedidos, vendas e controle de estoque. 
 </p>
 
 
 <h2> <b> Usuários </b> </h2>
-<hr>
 <ol>
     <li>Gerente: administrador do sistema, além disso é reponsável pela gestão do estoque e dos funcionários da loja
     </li>
@@ -22,14 +20,12 @@
 
 
 <h2> <b> Estrutura de diretório </b> </h2>
-<hr>
 <ul type="square">
     <li> Os arquivos responsáveis pelo front-end do sistema estão contidos na pasta Client </li>
     <li> Os arquivos contendo as funções que controlam o CRUD estão na pasta Server </li>
 </ul>
  
 <h2> <b> Tecnologias Utilizadas </b> </h2>
-<hr>
 <ul>
     <li>JavaScript ECMAScript 2022  </li>
     <li>MySQL 8 </li>
@@ -40,7 +36,6 @@
 </ul>
  
 <h2> <b> Desenvolvedores </b> </h2>
-<hr>
 <ul type = "circle">
     <li>Eduardo Dezena Gonçalves</li>
     <li>Guilherme Grego Santos </li>
