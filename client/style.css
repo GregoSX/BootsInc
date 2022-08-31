@@ -1,0 +1,35 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color:  #663300;
+}
+  
+.container {
+    width: 500px;
+    text-align: center;
+    margin: 88px 433px;
+    background-color: #996600;
+    border-radius: 15px;
+}
+
+.buttons {
+    padding: 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    width: 337px;
+}
+
+.buttons input {
+    height: 50px;
+    color: white;
+    border: none;
+    font: 25px "Archivo" "Regular";
+    background-color: #C76300;
+    border-radius: 15px;
+    box-shadow: 0px 4px rgba(0, 0, 0, 0.25);
+}
