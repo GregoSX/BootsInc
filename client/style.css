@@ -7,13 +7,16 @@
 body {
     background-color:  #663300;
 }
-  
+
 .container {
+    display: flex;
     width: 500px;
     text-align: center;
     margin: 88px 433px;
     background-color: #996600;
     border-radius: 15px;
+    align-items: center;
+    justify-content: center;
 }
 
 .buttons {
