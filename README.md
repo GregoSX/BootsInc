@@ -42,6 +42,16 @@
     <li>CSS 3 </li>
     <li>Express 4.16 </li>
 </ul>
+
+<h2> <b> Boas práticas de programação </b> </h2>
+<ul>
+    <li>Toda nova feature deve ser devidamente documentada.</li>
+    <li>Toda função declarada deve possuir comentários para esclarecer o que ela faz.</li>
+    <li>A indentação de código é de quatro caracteres de espaço.</li>
+    <li>As variáveis devem possuir nomes sigificativos e de fácil compreensão.</li>
+    <li>Classes criadas devem iniciar cada palavra de seu nome com letra maiúscula e sem o uso de preposições. (Exemplo: EngenhariaSoftware)</li>
+    <li>Sempre que possível, deve se inicializar as variáveis assim que declaradas.</li>
+</ul>
  
 <h2> <b> Desenvolvedores </b> </h2>
 <ul type = "circle">
