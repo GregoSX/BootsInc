@@ -35,12 +35,11 @@
  
 <h2> <b> Tecnologias Utilizadas </b> </h2>
 <ul>
-    <li>JavaScript ECMAScript 2022  </li>
+    <li>PHP 8.0.22 </li>
     <li>MySQL 8 </li>
-    <li>NodeJs 16.16 </li>
     <li>HTML 5 </li>
     <li>CSS 3 </li>
-    <li>Express 4.16 </li>
+    <li>XAMPP 3.3.0 </li>
 </ul>
 
 <h2> <b> Boas práticas de programação </b> </h2>
