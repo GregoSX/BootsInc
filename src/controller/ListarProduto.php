@@ -43,7 +43,7 @@ if($res->num_rows == 0) {
                     <td> <?php echo $linha['tamanho'];?> </td> 
                     <td> <?php echo $linha['quantidadeEstoque'];?>  </td> 
                     <td align="center">
-                        <input type="button" value="Editar" onclick="location.href='form_incluir.php?codProduto=<?php echo $dados['codProduto']; ?>'">
+                        <input type="button" value="Editar" onclick="location.href='EditarProduto.php?codProduto=<?php echo $linha['codProduto'] ?>'">
                         <input type="button" value="Excluir" onclick="location.href='ExcluirProduto.php?codProduto=<?php echo $linha['codProduto'] ?>'">
                     </td>
                 </tr>

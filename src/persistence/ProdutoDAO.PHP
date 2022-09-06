@@ -26,13 +26,19 @@ class ProdutoDAO {
         return $res;
     }
 
-    function editarProduto($codProduto, $conn) {
-        $sql = "SELECT produto.*
-                FROM produto
-                WHERE codProduto = $codProduto";
+    function editarProtudo($conn) {
+        $sql = "SELECT codProduto FROM produto WHERE codProduto=".$_POST["codProduto"];
         $result = mysqli_query($conn, $sql);
-        $vetor = mysqli_fetch_array($result, MYSQLI_ASSOC);
-        mysqli_close($conn);
+            if(mysqli_num_rows($result)!=0){
+                $sql = "UPDATE produto
+                        SET codProduto         ='".$_POST["codProduto"]."',
+                            descricao='".$_POST["descricao"]."',
+                            preco='"   .$_POST["preco"]."',
+                            tamanho='"       .$_POST["tamanho"]."',
+                            quantidadeEstoque='"       .$_POST["quantidadeEstoque"]."'
+                            WHERE codProduto=".$_POST["codProduto"];
+        }
+        mysqli_query($conn, $sql);
     }
 
 }
