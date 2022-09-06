@@ -1,0 +1,22 @@
+* {
+    color: white;
+    box-sizing: border-box;
+}
+
+body {
+    background-color:  #663300;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.container td input{
+    background-color: #C76300;
+    border: none;
+}
+
+form {
+    background-color: #996600;
+    width: 50vw;
+    height: 50vh;
+}
