@@ -16,6 +16,12 @@ $conn = $conn->getConnection();
 $prod = new Produto($codProduto, $descricao, $preco, $tamanho, $quantidadeEstoque);
 
 $produtodao = new ProdutoDAO();
-$produtodao->salvar($prod, $conn);
+$res = $produtodao->salvar($prod, $conn);
+
+if($res == TRUE) {
+    header("location: ./ListarProduto.php");
+} else {
+    echo "Erro no cadastro! " . $conn->error;
+}
 
 ?>
