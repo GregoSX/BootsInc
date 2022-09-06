@@ -51,9 +51,10 @@ if($res->num_rows == 0) {
     }
 ?>   
                 <tr bgcolor="grey"><td colspan="12" height="5" class="buttons"></td></tr>
-                <tr><td colspan="12" align="center" class="buttons"><input type="submit" value="Adicionar produto"></td></tr>
             </table> 
-    
+            <input type="submit" value="Adicionar produto">
+            <br><br>
+            <input type="button" value="Voltar" onclick="location.href='../index.html'" >
 <?php
 }
 ?>
