@@ -5,7 +5,7 @@
     </head>
     <body>
         <form name="form1" method="POST" action="../view/CadastrarProduto.html">
-            <table align="center" width="90%">
+            <table style="text-align:center;" width="90%">
 <?php
 
 include_once '../persistence/BD.php';
@@ -19,7 +19,7 @@ $res = $produtodao->listarProduto($conn);
 
 if($res->num_rows == 0) {
 ?>
-                <tr ><td align="center" class="buttons" > Nenhum produto cadastrado.</td></tr>
+                <tr ><td style="text-align:center;" class="buttons" > Nenhum produto cadastrado.</td></tr>
             </table>
             <br>
             <input type="submit" value="Adicionar produto" class="buttons">
@@ -30,32 +30,32 @@ if($res->num_rows == 0) {
 
 ?>
                 <tr border="1" frame="hsides" rules="rows" bgcolor='#D2691E;'>
-                    <th width="9%" align="center"> Código </th>
-                    <th width="9%" align="center"> Descrição </th>
-                    <th width="9%" align="center"> Preço </th>
-                    <th width="9%" align="center"> Tamanho </th>
-                    <th width="9%" align="center"> Quantidade </th>
-                    <th width="9%" align="center"> Opções </th>
+                    <th width="9%" style="text-align:center;"> Código </th>
+                    <th width="9%" style="text-align:center;"> Descrição </th>
+                    <th width="9%" style="text-align:center;"> Preço </th>
+                    <th width="9%" style="text-align:center;"> Tamanho </th>
+                    <th width="9%" style="text-align:center;"> Quantidade </th>
+                    <th width="9%" style="text-align:center;"> Opções </th>
                 </tr>
 <?php
     while($linha = $res->fetch_assoc()) {
 ?>
-                <tr bgcolor="#d3d3d3" align="center">
-                    <td> <?php echo $linha['codProduto'];  ?> </td> 
-                    <td> <?php echo $linha['descricao'];?> </td> 
-                    <td> <?php echo $linha['preco']; ?>  </td> 
-                    <td> <?php echo $linha['tamanho'];?> </td> 
-                    <td> <?php echo $linha['quantidadeEstoque'];?>  </td> 
-                    <td align="center">
+                <tr bgcolor="#d3d3d3" style="text-align:center;">
+                    <td> <?php echo $linha['codProduto'];  ?> </td>
+                    <td> <?php echo $linha['descricao'];?> </td>
+                    <td> <?php echo $linha['preco']; ?>  </td>
+                    <td> <?php echo $linha['tamanho'];?> </td>
+                    <td> <?php echo $linha['quantidadeEstoque'];?>  </td>
+                    <td style="text-align:center;">
                         <input type="button" value="Editar" onclick="location.href='EditarProduto.php?codProduto=<?php echo $linha['codProduto'] ?>'">
                         <input type="button" value="Excluir" onclick="location.href='ExcluirProduto.php?codProduto=<?php echo $linha['codProduto'] ?>'">
                     </td>
                 </tr>
 <?php
     }
-?>   
+?>
                 <tr><td colspan="12" height="5" class="buttons" ></td></tr>
-            </table> 
+            </table>
             <input type="submit" value="Adicionar produto" class="buttons">
             <br><br>
             <input type="button" value="Voltar" onclick="location.href='../index.html'" class="buttons" >
