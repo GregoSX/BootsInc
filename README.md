@@ -21,15 +21,15 @@
 
 <h2> <b> Estrutura de diretório </b> </h2>
 <ul type="square">
-    <li> Os arquivos responsáveis pelo front-end do sistema estão contidos na pasta Client </li>
-    <li> Os arquivos contendo as funções que controlam o CRUD estão na pasta Server </li>
+    <li> Criar uma pasta com nome doc para a documentação e uma pasta de nome src para o código.</li>
+    <li> Criar uma pasta styles para a estilização do HTML. </li>
 </ul>
 
 <h2> <b> Regras e padrões de uso </b> </h2>
 <ul type="square">
-    <li> Toda documentação deve estar contida na pasta doc e todo código implementado na pasta src </li>
+    <li> Toda documentação deve estar contida na pasta doc e todo código implementado na pasta src. </li>
     <li> Os commits devem ter mensagens curtas e padrozinadas para facilitar a comunicação. </li>
-    <li> Padronizar a nomenclatura das branches</li>
+    <li> Padronizar a nomenclatura das branches.</li>
 </ul>
 
  
