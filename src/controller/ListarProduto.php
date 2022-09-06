@@ -19,13 +19,17 @@ $res = $produtodao->listarProduto($conn);
 
 if($res->num_rows == 0) {
 ?>
-                <tr ><td align="center" class="buttons"> Nenhum produto cadastrado.</td></tr>
-                <tr ><td align="center" class="buttons"> <input type="submit" value="Adicionar produto"></td></tr>
+                <tr ><td align="center" class="buttons" > Nenhum produto cadastrado.</td></tr>
+            </table>
+            <br>
+            <input type="submit" value="Adicionar produto" class="buttons">
+            <br><br>
+            <input type="button" value="Voltar" onclick="location.href='../index.html'" class="buttons" >
 <?php
 } else {
 
 ?>
-                <tr border="1" frame="hsides" rules="rows" bgcolor="grey">
+                <tr border="1" frame="hsides" rules="rows" bgcolor='#D2691E;'>
                     <th width="9%" align="center"> Código </th>
                     <th width="9%" align="center"> Descrição </th>
                     <th width="9%" align="center"> Preço </th>
@@ -50,11 +54,11 @@ if($res->num_rows == 0) {
 <?php
     }
 ?>   
-                <tr bgcolor="grey"><td colspan="12" height="5" class="buttons"></td></tr>
+                <tr><td colspan="12" height="5" class="buttons" ></td></tr>
             </table> 
-            <input type="submit" value="Adicionar produto">
+            <input type="submit" value="Adicionar produto" class="buttons">
             <br><br>
-            <input type="button" value="Voltar" onclick="location.href='../index.html'" >
+            <input type="button" value="Voltar" onclick="location.href='../index.html'" class="buttons" >
 <?php
 }
 ?>
