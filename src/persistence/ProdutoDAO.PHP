@@ -26,7 +26,7 @@ class ProdutoDAO {
         return $res;
     }
 
-    function editarProtudo($conn) {
+    function editarProduto($conn) {
         $sql = "SELECT codProduto FROM produto WHERE codProduto=".$_POST["codProduto"];
         $result = mysqli_query($conn, $sql);
             if(mysqli_num_rows($result)!=0){

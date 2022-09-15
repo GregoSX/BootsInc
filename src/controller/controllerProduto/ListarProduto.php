@@ -24,7 +24,7 @@ if($res->num_rows == 0) {
             <br>
             <input type="submit" value="Adicionar produto" class="buttons">
             <br><br>
-            <input type="button" value="Voltar" onclick="location.href='../index.html'" class="buttons" >
+            <input type="button" value="Voltar" onclick="location.href='../../index.html'" class="buttons" >
 <?php
 } else {
 

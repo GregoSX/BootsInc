@@ -8,7 +8,7 @@ $conn = new BD();
 $conn = $conn->getConnection();
 
 $produtodao = new ProdutoDAO();
-$res = $produtodao->editarProtudo($conn);
+$res = $produtodao->editarProduto($conn);
 
 header("location: ./ListarProduto.php");
 
