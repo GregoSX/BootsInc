@@ -8,12 +8,12 @@ $idCliente = $_POST['idCliente'];
 $cpf = $_POST['cpf'];
 $primeiroNome = $_POST['primeiroNome'];
 $sobrenome = $_POST['sobrenome'];
-$nasc = $_POST['nasc'];
+$endereco = $_POST['endereco'];
 
 $conn = new BD();
 $conn = $conn->getConnection();
 
-$cliente = new Cliente($idCliente, $cpf, $primeiroNome, $sobrenome, $nasc);
+$cliente = new Cliente($idCliente, $cpf, $primeiroNome, $sobrenome, $endereco);
 
 $clientedao = new ClienteDAO();
 $res = $clientedao->salvar($cliente, $conn);

@@ -47,9 +47,9 @@ include_once '../../persistence/ClienteDAO.PHP';
             <td><input type="text" name="sobrenome" value="<?php echo @$vetor['sobrenome']; ?>" size="70">
             </td>
         </tr>
-        <tr><td width="20%">Nascimento:</td>
+        <tr><td width="20%">Endereço:</td>
             <td colspan="2" width="90%">
-            <input type="date" name="nasc" value="<?php echo @$vetor['nasc']; ?>">
+            <input type="text" name="endereco" value="<?php echo @$vetor['endereco']; ?> "size="70">
         </td>
         </tr>
         <tr><td colspan="3" align="center" class="buttons">

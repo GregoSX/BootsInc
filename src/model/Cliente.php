@@ -5,14 +5,14 @@ class Cliente {
     private $cpf;
     private $primeiroNome;
     private $sobrenome;
-    private $nasc;
+    private $endereco;
 
-    function __construct($idCliente, $cpf, $primeiroNome, $sobrenome, $nasc) {
+    function __construct($idCliente, $cpf, $primeiroNome, $sobrenome, $endereco) {
         $this->idCliente = $idCliente;
         $this->cpf = $cpf;
         $this->primeiroNome = $primeiroNome;
         $this->sobrenome = $sobrenome;
-        $this->nasc = $nasc;
+        $this->endereco = $endereco;
     }
 
     function getIdCliente() {
@@ -31,8 +31,8 @@ class Cliente {
         return $this->sobrenome;
     }
 
-    function getNasc() {
-        return $this->nasc;
+    function getEndereco() {
+        return $this->endereco;
     }
 }
 

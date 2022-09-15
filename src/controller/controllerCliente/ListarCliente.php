@@ -33,7 +33,7 @@ if($res->num_rows == 0) {
                     <th width="9%" style="text-align:center;"> ID </th>
                     <th width="9%" style="text-align:center;"> CPF </th>
                     <th width="9%" style="text-align:center;"> Nome </th>
-                    <th width="9%" style="text-align:center;"> Nascimento </th>
+                    <th width="9%" style="text-align:center;"> Endereço </th>
                     <th width="9%" style="text-align:center;"> Opções </th>
                 </tr>
 <?php
@@ -43,7 +43,7 @@ if($res->num_rows == 0) {
                     <td> <?php echo $linha['idCliente'];  ?> </td>
                     <td> <?php echo $linha['cpf'];?> </td>
                     <td> <?php echo $linha['primeiroNome']." ".$linha['sobrenome'];?>  </td>
-                    <td> <?php echo $linha['nasc'];?>  </td>
+                    <td> <?php echo $linha['endereco'];?>  </td>
                     <td style="text-align:center;">
                         <input type="button" value="Editar" onclick="location.href='EditarCliente.php?idCliente=<?php echo $linha['idCliente'] ?>'">
                         <input type="button" value="Excluir" onclick="location.href='ExcluirCliente.php?idCliente=<?php echo $linha['idCliente'] ?>'">

@@ -1,7 +1,7 @@
 <?php
 
-include_once '../persistence/BD.php';
-include_once '../persistence/ClienteDAO.PHP';
+include_once '../../persistence/BD.php';
+include_once '../../persistence/ClienteDAO.PHP';
 
 $idCliente = $_GET['idCliente'];
 
