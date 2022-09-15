@@ -1,15 +1,15 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <link rel="stylesheet" href="../styles/styleLista.css">
+        <link rel="stylesheet" href="../../styles/styleLista.css">
     </head>
     <body>
-        <form name="form1" method="POST" action="../view/CadastrarProduto.html">
+        <form name="form1" method="POST" action="../../view/CadastrarProduto.html">
             <table style="text-align:center;" width="90%">
 <?php
 
-include_once '../persistence/BD.php';
-include_once '../persistence/ProdutoDAO.PHP';
+include_once '../../persistence/BD.php';
+include_once '../../persistence/ProdutoDAO.PHP';
 
 $conn = new BD();
 $conn = $conn->getConnection();
@@ -58,7 +58,7 @@ if($res->num_rows == 0) {
             </table>
             <input type="submit" value="Adicionar produto" class="buttons">
             <br><br>
-            <input type="button" value="Voltar" onclick="location.href='../index.html'" class="buttons" >
+            <input type="button" value="Voltar" onclick="location.href='../../index.html'" class="buttons" >
 <?php
 }
 ?>

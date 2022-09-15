@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../styles/styleEditar.css">
+    <link rel="stylesheet" href="../../styles/styleEditar.css">
     <title>Editar Produto</title>
 </head>
 <body>
@@ -12,8 +12,8 @@
 <form name="form1" method="POST" action="IncluirProduto.php">
 <?php
 
-include_once '../persistence/BD.php';
-include_once '../persistence/ProdutoDAO.PHP';
+include_once '../../persistence/BD.php';
+include_once '../../persistence/ProdutoDAO.PHP';
 
 ?>
  <center><h3>Editar produto</h3></center>

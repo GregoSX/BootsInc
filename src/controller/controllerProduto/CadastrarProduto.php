@@ -1,8 +1,8 @@
 <?php
 
-include_once '../persistence/BD.php';
-include_once '../model/Produto.php';
-include_once '../persistence/ProdutoDAO.PHP';
+include_once '../../persistence/BD.php';
+include_once '../../model/Produto.php';
+include_once '../../persistence/ProdutoDAO.PHP';
 
 $codProduto = $_POST['codProduto'];
 $descricao = $_POST['descricao'];
