@@ -25,11 +25,11 @@
     <li> Criar uma pasta styles para a estilização do HTML. </li>
 </ul>
 
-<h2> <b> Regras e padrões de uso </b> </h2>
+<h2> <b> Regras e padrões de uso do GIT </b> </h2>
 <ul type="square">
-    <li> Toda documentação deve estar contida na pasta doc e todo código implementado na pasta src. </li>
     <li> Os commits devem ter mensagens curtas e padrozinadas para facilitar a comunicação. </li>
     <li> Padronizar a nomenclatura das branches.</li>
+    <li> O uso de pull requests deve ser feito para uma avaliação do código antes de se realizar um merge na master. </li>
 </ul>
 
  
