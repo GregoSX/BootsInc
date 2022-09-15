@@ -9,7 +9,7 @@
 </head>
 <body>
 <div class="container">
-<form name="form1" method="POST" action="Incluir.php">
+<form name="form1" method="POST" action="IncluirProduto.php">
 <?php
 
 include_once '../persistence/BD.php';
