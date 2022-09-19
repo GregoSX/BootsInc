@@ -44,7 +44,6 @@ class CaixaDAO {
         }
         mysqli_query($conn, $sql);
     }
-
 }
 
 ?>
