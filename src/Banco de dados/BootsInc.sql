@@ -6,8 +6,8 @@ CREATE TABLE produto (
 	codProduto INT NOT NULL AUTO_INCREMENT,
 	descricao VARCHAR(30) NOT NULL,
 	preco DECIMAL(6,2) NOT NULL,
-    tamanho INT NOT NULL,
-    quantidadeEstoque INT NOT NULL,
+    tamanho INT UNSIGNED NOT NULL,
+    quantidadeEstoque INT UNSIGNED NOT NULL,
 	UNIQUE INDEX codProduto_UNIQUE (codProduto ASC) VISIBLE,
 	PRIMARY KEY (codProduto)
 );
@@ -18,6 +18,7 @@ CREATE TABLE cliente (
 	primeiroNome VARCHAR(30) NOT NULL,
 	sobrenome VARCHAR(70) NOT NULL,
     endereco VARCHAR(70) NOT NULL,
+    numCompras INT UNSIGNED DEFAULT 0,
 	PRIMARY KEY (idCliente),
 	UNIQUE INDEX cpf_UNIQUE (cpf ASC) VISIBLE
 );
@@ -48,11 +49,14 @@ CREATE TABLE caixa (
 
 CREATE TABLE pedido (
 	idPedido INT UNSIGNED AUTO_INCREMENT,
-    idProduto INT UNSIGNED,
+    idProduto INT NOT NULL,
     quantidade INT UNSIGNED,
-    valorPedido DECIMAL(6,2) NOT NULL DEFAULT 0.00,
+    preco DECIMAL(6,2) NOT NULL,
+    valorPedido DECIMAL(6,2) AS (preco*quantidade) NOT NULL DEFAULT 0.00,
     UNIQUE INDEX idPedido_UNIQUE (idPedido ASC) VISIBLE,
-    PRIMARY KEY (idPedido)
+    PRIMARY KEY (idPedido),
+    FOREIGN KEY (idProduto)
+	REFERENCES produto (codProduto)
 );
 
 -- Valor do pedido
@@ -70,10 +74,26 @@ DELIMITER ;
 CREATE TABLE venda (
 	idVenda INT UNSIGNED AUTO_INCREMENT,
     idPedido INT UNSIGNED,
+    quantidade INT UNSIGNED NOT NULL,
+    valorPedido DECIMAL(6,2) NOT NULL DEFAULT 0.00,
     cpfCliente CHAR(11) NOT NULL,
-    cpfFuncionario CHAR(11) NOT NULL,
+    cpfVendedor CHAR(11) NOT NULL,
+    cpfCaixa CHAR(11) NOT NULL,
+    
     UNIQUE INDEX idVenda_UNIQUE (idVenda ASC) VISIBLE,
-    PRIMARY KEY (idVenda)
+    PRIMARY KEY (idVenda),
+    FOREIGN KEY (idPedido)
+	REFERENCES pedido (idPedido),
+    FOREIGN KEY (quantidade)
+	REFERENCES produto (quantidadeEstoque),
+    FOREIGN KEY (valorPedido)
+	REFERENCES pedido (valorPedido),
+    FOREIGN KEY (cpfCliente)
+	REFERENCES cliente (cpf),
+    FOREIGN KEY (cpfVendedor)
+	REFERENCES vendedor (cpf),
+    FOREIGN KEY (cpfCaixa)
+	REFERENCES caixa (cpf)
 );
 
 -- Baixar estoque após venda
@@ -82,23 +102,37 @@ CREATE TRIGGER baixarEstoque
 AFTER INSERT ON venda
 FOR EACH ROW
 BEGIN
-	UPDATE pedido P, produto PR
-	SET Pr.quantidadeEstoque = Pr.quantidadeEstoque - P.quantidade
+	UPDATE produto P
+	SET P.quantidadeEstoque = P.quantidadeEstoque - P.quantidade
 	WHERE P.idProduto = PR.codProduto;
 END //
 DELIMITER ;
 
--- Efetuar uma venda
+-- Aumenta compras de cliente
 DELIMITER //
-CREATE TRIGGER efetuarVendavenda
+CREATE TRIGGER comprasCliente
 AFTER INSERT ON venda
 FOR EACH ROW
 BEGIN
-	DELETE
-    FROM pedido
-	WHERE venda.idPedido = pedido.idPedido;
+	UPDATE cliente C
+    SET C.numCompras = C.numCompras + 1
+	WHERE C.cpf = NEW.cpfCliente;
 END //
 DELIMITER ;
+
+-- Aumenta número de vendas do vendedor
+DELIMITER //
+CREATE TRIGGER vendasVendedor
+AFTER INSERT ON venda
+FOR EACH ROW
+BEGIN
+	UPDATE vendedor V
+    SET V.numVendas = V.numVendas + 1
+	WHERE V.cpf = NEW.cpfVendedor;
+END //
+DELIMITER ;
+
+
 
 INSERT INTO produto (codProduto, descricao, preco, tamanho, quantidadeEstoque)
 VALUES ("1", "sapato nike", "100.50", "36", "10");
@@ -106,5 +140,8 @@ VALUES ("1", "sapato nike", "100.50", "36", "10");
 INSERT INTO pedido (idProduto, quantidade)
 VALUES (1, 2);
 
-INSERT INTO venda (idPedido , cpfCliente, cpfFuncionario)
-VALUES (1, 2, 2);
+INSERT INTO cliente (idCliente, cpf, primeiroNome, sobrenome, endereco) 
+VALUES ('23', '23232323232', 'jogao', 'couves', 'casa dele');
+
+INSERT INTO venda (idPedido , cpfCliente, cpfVendedor, cpfCaixa)
+VALUES (1, 11111111111, 88888888888, 77777777777);
