@@ -3,7 +3,7 @@ CREATE SCHEMA bootsinc;
 USE bootsinc;
 
 CREATE TABLE produto (
-	codProduto INT NOT NULL AUTO_INCREMENT,
+	codProduto INT UNSIGNED NOT NULL AUTO_INCREMENT,
 	descricao VARCHAR(30) NOT NULL,
 	preco DECIMAL(6,2) NOT NULL,
     tamanho INT UNSIGNED NOT NULL,
@@ -49,31 +49,28 @@ CREATE TABLE caixa (
 
 CREATE TABLE pedido (
 	idPedido INT UNSIGNED AUTO_INCREMENT,
-    idProduto INT NOT NULL,
+    idProduto INT UNSIGNED NOT NULL,
     quantidade INT UNSIGNED,
     preco DECIMAL(6,2) NOT NULL,
-    valorPedido DECIMAL(6,2) AS (preco*quantidade) NOT NULL DEFAULT 0.00,
+    valorPedido DECIMAL(6,2) AS (preco*quantidade) NOT NULL,
     UNIQUE INDEX idPedido_UNIQUE (idPedido ASC) VISIBLE,
     PRIMARY KEY (idPedido),
+    CONSTRAINT
     FOREIGN KEY (idProduto)
 	REFERENCES produto (codProduto)
+    ON DELETE RESTRICT
+	ON UPDATE RESTRICT,
+    CONSTRAINT
+    FOREIGN KEY (preco)
+	REFERENCES produto (preco)
+    ON DELETE RESTRICT
+	ON UPDATE RESTRICT
 );
-
--- Valor do pedido
-DELIMITER //
-CREATE TRIGGER valorPedido
-AFTER INSERT ON pedido
-FOR EACH ROW
-BEGIN
-	UPDATE Pedido P
-	SET P.valorPedido = P.valorPedido + P.quantidade * produto.preco
-	WHERE P.numPedido = NEW.numPedido;
-END //
-DELIMITER ;
 
 CREATE TABLE venda (
 	idVenda INT UNSIGNED AUTO_INCREMENT,
-    idPedido INT UNSIGNED,
+    idPedido INT UNSIGNED NOT NULL,
+    idProduto INT UNSIGNED NOT NULL,
     quantidade INT UNSIGNED NOT NULL,
     valorPedido DECIMAL(6,2) NOT NULL DEFAULT 0.00,
     cpfCliente CHAR(11) NOT NULL,
@@ -84,8 +81,10 @@ CREATE TABLE venda (
     PRIMARY KEY (idVenda),
     FOREIGN KEY (idPedido)
 	REFERENCES pedido (idPedido),
+    FOREIGN KEY (idProduto)
+    REFERENCES produto (idProduto ),
     FOREIGN KEY (quantidade)
-	REFERENCES produto (quantidadeEstoque),
+	REFERENCES pedido (quantidade),
     FOREIGN KEY (valorPedido)
 	REFERENCES pedido (valorPedido),
     FOREIGN KEY (cpfCliente)
@@ -103,8 +102,8 @@ AFTER INSERT ON venda
 FOR EACH ROW
 BEGIN
 	UPDATE produto P
-	SET P.quantidadeEstoque = P.quantidadeEstoque - P.quantidade
-	WHERE P.idProduto = PR.codProduto;
+	SET P.quantidadeEstoque = P.quantidadeEstoque - NEW.quantidade
+	WHERE P.codProduto = NEW.idProduto;
 END //
 DELIMITER ;
 
@@ -132,7 +131,16 @@ BEGIN
 END //
 DELIMITER ;
 
-
+-- Efetuar uma venda exclui um pedido
+DELIMITER //
+CREATE TRIGGER fecharPedido
+AFTER INSERT ON venda
+FOR EACH ROW
+BEGIN
+	DELETE FROM pedido P
+	WHERE P.idPedido = NEW.idPedido;
+END //
+DELIMITER ;
 
 INSERT INTO produto (codProduto, descricao, preco, tamanho, quantidadeEstoque)
 VALUES ("1", "sapato nike", "100.50", "36", "10");

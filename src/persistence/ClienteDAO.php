@@ -33,6 +33,7 @@ class ClienteDAO {
             if(mysqli_num_rows($result)!=0){
                 $sql = "UPDATE cliente
                         SET idCliente         ='".$_POST["idCliente"]."',
+                            cpf         ='".$_POST["cpf"]."',
                             primeiroNome='"   .$_POST["primeiroNome"]."',
                             sobrenome='"       .$_POST["sobrenome"]."',
                             endereco='"       .$_POST["endereco"]."',

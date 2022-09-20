@@ -3,7 +3,7 @@
 class BD {
     private $servername = "localhost";
     private $username =  "root";
-    private $password =  "Guizin123;";
+    private $password =  "senha;";
     private $bd = "bootsinc";
     private $conn = null;
 
