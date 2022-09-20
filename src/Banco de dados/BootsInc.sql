@@ -3,7 +3,7 @@ CREATE SCHEMA bootsinc;
 USE bootsinc;
 
 CREATE TABLE produto (
-	codProduto INT UNSIGNED NOT NULL AUTO_INCREMENT,
+	codProduto INT NOT NULL AUTO_INCREMENT,
 	descricao VARCHAR(30) NOT NULL,
 	preco DECIMAL(6,2) NOT NULL,
     tamanho INT UNSIGNED NOT NULL,
@@ -49,58 +49,29 @@ CREATE TABLE caixa (
 
 CREATE TABLE pedido (
 	idPedido INT UNSIGNED AUTO_INCREMENT,
-    idProduto INT UNSIGNED NOT NULL,
+    idProduto INT NOT NULL,
     quantidade INT UNSIGNED,
-<<<<<<< HEAD
     precoVendido DECIMAL(6,2) NOT NULL,
+    statusPedido VARCHAR(11) NOT NULL DEFAULT "Pendente",
     UNIQUE INDEX idPedido_UNIQUE (idPedido ASC) VISIBLE,
     PRIMARY KEY (idProduto, idPedido),
-=======
-    preco DECIMAL(6,2) NOT NULL,
-    valorPedido DECIMAL(6,2) AS (preco*quantidade) NOT NULL,
-    UNIQUE INDEX idPedido_UNIQUE (idPedido ASC) VISIBLE,
-    PRIMARY KEY (idPedido),
->>>>>>> 47d569e04320b117f61af97b66c3331ac4cea524
     CONSTRAINT
     FOREIGN KEY (idProduto)
 	REFERENCES produto (codProduto)
     ON DELETE RESTRICT
-<<<<<<< HEAD
-=======
-	ON UPDATE RESTRICT,
-    CONSTRAINT
-    FOREIGN KEY (preco)
-	REFERENCES produto (preco)
-    ON DELETE RESTRICT
->>>>>>> 47d569e04320b117f61af97b66c3331ac4cea524
 	ON UPDATE RESTRICT
 );
 
 CREATE TABLE venda (
 	idVenda INT UNSIGNED AUTO_INCREMENT,
     idPedido INT UNSIGNED NOT NULL,
-<<<<<<< HEAD
     valorVenda DECIMAL(6,2) NOT NULL DEFAULT 0.00,
-=======
-    idProduto INT UNSIGNED NOT NULL,
-    quantidade INT UNSIGNED NOT NULL,
-    valorPedido DECIMAL(6,2) NOT NULL DEFAULT 0.00,
->>>>>>> 47d569e04320b117f61af97b66c3331ac4cea524
     cpfCliente CHAR(11) NOT NULL,
     
     UNIQUE INDEX idVenda_UNIQUE (idVenda ASC) VISIBLE,
     PRIMARY KEY (idVenda),
     FOREIGN KEY (idPedido)
 	REFERENCES pedido (idPedido),
-<<<<<<< HEAD
-=======
-    FOREIGN KEY (idProduto)
-    REFERENCES produto (idProduto ),
-    FOREIGN KEY (quantidade)
-	REFERENCES pedido (quantidade),
-    FOREIGN KEY (valorPedido)
-	REFERENCES pedido (valorPedido),
->>>>>>> 47d569e04320b117f61af97b66c3331ac4cea524
     FOREIGN KEY (cpfCliente)
 	REFERENCES cliente (cpf)
 );
@@ -114,7 +85,6 @@ BEGIN
 	UPDATE produto P
 	SET P.quantidadeEstoque = P.quantidadeEstoque - NEW.quantidade
 	WHERE P.codProduto = NEW.idProduto;
-<<<<<<< HEAD
 END //
 DELIMITER ;
 
@@ -127,8 +97,6 @@ BEGIN
 	UPDATE produto P
 	SET P.quantidadeEstoque = P.quantidadeEstoque + OLD.quantidade
 	WHERE P.codProduto = OLD.idProduto;
-=======
->>>>>>> 47d569e04320b117f61af97b66c3331ac4cea524
 END //
 DELIMITER ;
 
@@ -144,42 +112,14 @@ BEGIN
 END //
 DELIMITER ;
 
--- Efetuar uma venda exclui um pedido
+-- Efetuar uma venda confirma o pedido
 DELIMITER //
 CREATE TRIGGER fecharPedido
 AFTER INSERT ON venda
 FOR EACH ROW
 BEGIN
-	DELETE FROM pedido P
+	UPDATE Pedido P
+	SET P.statusPedido = "Confirmado"
 	WHERE P.idPedido = NEW.idPedido;
 END //
 DELIMITER ;
-
-<<<<<<< HEAD
--- Para atualizar o valor total da venda de acordo com os produtos no pedido.
-DELIMITER //
-CREATE TRIGGER valorVenda
-AFTER INSERT ON Pedido
-FOR EACH ROW
-BEGIN
-	UPDATE Venda V
-	SET V.valorVenda = V.valorVenda + NEW.quantidade * New.precoVendido
-	WHERE V.idPedido = NEW.idPedido;
-END //
-DELIMITER ;
-
-INSERT INTO pedido (idPedido, idProduto, quantidade, precoVendido)
-VALUES (1, 1, 1, 1.00);
-=======
--- Efetuar uma venda exclui um pedido
-DELIMITER //
-CREATE TRIGGER fecharPedido
-AFTER INSERT ON venda
-FOR EACH ROW
-BEGIN
-	DELETE FROM pedido P
-	WHERE P.idPedido = NEW.idPedido;
-END //
-DELIMITER ;
->>>>>>> 47d569e04320b117f61af97b66c3331ac4cea524
-
