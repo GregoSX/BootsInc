@@ -54,7 +54,7 @@ include_once '../../persistence/ClienteDAO.php';
         </tr>
         <tr><td width="20%">N° Compras:</td>
             <td colspan="2" width="90%">
-            <input type="number" name="numCompra" value="<?php echo @$vetor['numCOmpras']; ?> "size="70" disabled>
+            <input type="number" name="numCompras" placeholder="<?php echo @$vetor['numCompras']; ?> "size="70" disabled>
             </td>
         </tr>
         <tr><td colspan="3" align="center" class="buttons">

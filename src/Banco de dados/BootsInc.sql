@@ -51,60 +51,51 @@ CREATE TABLE pedido (
 	idPedido INT UNSIGNED AUTO_INCREMENT,
     idProduto INT NOT NULL,
     quantidade INT UNSIGNED,
-    preco DECIMAL(6,2) NOT NULL,
-    valorPedido DECIMAL(6,2) AS (preco*quantidade) NOT NULL DEFAULT 0.00,
+    precoVendido DECIMAL(6,2) NOT NULL,
     UNIQUE INDEX idPedido_UNIQUE (idPedido ASC) VISIBLE,
-    PRIMARY KEY (idPedido),
+    PRIMARY KEY (idProduto, idPedido),
+    CONSTRAINT
     FOREIGN KEY (idProduto)
 	REFERENCES produto (codProduto)
+    ON DELETE RESTRICT
+	ON UPDATE RESTRICT
 );
-
--- Valor do pedido
-DELIMITER //
-CREATE TRIGGER valorPedido
-AFTER INSERT ON pedido
-FOR EACH ROW
-BEGIN
-	UPDATE Pedido P
-	SET P.valorPedido = P.valorPedido + P.quantidade * produto.preco
-	WHERE P.numPedido = NEW.numPedido;
-END //
-DELIMITER ;
 
 CREATE TABLE venda (
 	idVenda INT UNSIGNED AUTO_INCREMENT,
-    idPedido INT UNSIGNED,
-    quantidade INT UNSIGNED NOT NULL,
-    valorPedido DECIMAL(6,2) NOT NULL DEFAULT 0.00,
+    idPedido INT UNSIGNED NOT NULL,
+    valorVenda DECIMAL(6,2) NOT NULL DEFAULT 0.00,
     cpfCliente CHAR(11) NOT NULL,
-    cpfVendedor CHAR(11) NOT NULL,
-    cpfCaixa CHAR(11) NOT NULL,
     
     UNIQUE INDEX idVenda_UNIQUE (idVenda ASC) VISIBLE,
     PRIMARY KEY (idVenda),
     FOREIGN KEY (idPedido)
 	REFERENCES pedido (idPedido),
-    FOREIGN KEY (quantidade)
-	REFERENCES produto (quantidadeEstoque),
-    FOREIGN KEY (valorPedido)
-	REFERENCES pedido (valorPedido),
     FOREIGN KEY (cpfCliente)
-	REFERENCES cliente (cpf),
-    FOREIGN KEY (cpfVendedor)
-	REFERENCES vendedor (cpf),
-    FOREIGN KEY (cpfCaixa)
-	REFERENCES caixa (cpf)
+	REFERENCES cliente (cpf)
 );
 
--- Baixar estoque após venda
+-- Baixar estoque após um pedido
 DELIMITER //
 CREATE TRIGGER baixarEstoque
-AFTER INSERT ON venda
+AFTER INSERT ON pedido
 FOR EACH ROW
 BEGIN
 	UPDATE produto P
-	SET P.quantidadeEstoque = P.quantidadeEstoque - P.quantidade
-	WHERE P.idProduto = PR.codProduto;
+	SET P.quantidadeEstoque = P.quantidadeEstoque - NEW.quantidade
+	WHERE P.codProduto = NEW.idProduto;
+END //
+DELIMITER ;
+
+-- Aumenta o estoque após excluir um pedido
+DELIMITER //
+CREATE TRIGGER reporEstoque
+AFTER DELETE ON pedido
+FOR EACH ROW
+BEGIN
+	UPDATE produto P
+	SET P.quantidadeEstoque = P.quantidadeEstoque + OLD.quantidade
+	WHERE P.codProduto = OLD.idProduto;
 END //
 DELIMITER ;
 
@@ -120,28 +111,29 @@ BEGIN
 END //
 DELIMITER ;
 
--- Aumenta número de vendas do vendedor
+-- Efetuar uma venda exclui um pedido
 DELIMITER //
-CREATE TRIGGER vendasVendedor
+CREATE TRIGGER fecharPedido
 AFTER INSERT ON venda
 FOR EACH ROW
 BEGIN
-	UPDATE vendedor V
-    SET V.numVendas = V.numVendas + 1
-	WHERE V.cpf = NEW.cpfVendedor;
+	DELETE FROM pedido P
+	WHERE P.idPedido = NEW.idPedido;
 END //
 DELIMITER ;
 
+-- Para atualizar o valor total da venda de acordo com os produtos no pedido.
+DELIMITER //
+CREATE TRIGGER valorVenda
+AFTER INSERT ON Pedido
+FOR EACH ROW
+BEGIN
+	UPDATE Venda V
+	SET V.valorVenda = V.valorVenda + NEW.quantidade * New.precoVendido
+	WHERE V.idPedido = NEW.idPedido;
+END //
+DELIMITER ;
 
+INSERT INTO pedido (idPedido, idProduto, quantidade, precoVendido)
+VALUES (1, 1, 1, 1.00);
 
-INSERT INTO produto (codProduto, descricao, preco, tamanho, quantidadeEstoque)
-VALUES ("1", "sapato nike", "100.50", "36", "10");
-
-INSERT INTO pedido (idProduto, quantidade)
-VALUES (1, 2);
-
-INSERT INTO cliente (idCliente, cpf, primeiroNome, sobrenome, endereco) 
-VALUES ('23', '23232323232', 'jogao', 'couves', 'casa dele');
-
-INSERT INTO venda (idPedido , cpfCliente, cpfVendedor, cpfCaixa)
-VALUES (1, 11111111111, 88888888888, 77777777777);

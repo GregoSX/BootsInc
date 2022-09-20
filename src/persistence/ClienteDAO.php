@@ -35,8 +35,7 @@ class ClienteDAO {
                         SET idCliente         ='".$_POST["idCliente"]."',
                             primeiroNome='"   .$_POST["primeiroNome"]."',
                             sobrenome='"       .$_POST["sobrenome"]."',
-                            endereco='"       .$_POST["endereco"]."',
-                            numCompras='"       .$_POST["numCompras"]."'
+                            endereco='"       .$_POST["endereco"]."'
                             WHERE idCliente=".$_POST["idCliente"];
         }
         mysqli_query($conn, $sql);
