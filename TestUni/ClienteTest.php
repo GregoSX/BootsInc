@@ -7,7 +7,7 @@ class ClienteTest extends \PHPUnit\Framework\TestCase {
 
     public function testCadastrarCliente(){
         $obj = new ClienteDAO();
-        $servername = "localhost";
+        $servername = "127.0.0.1";
         $username = "root";
         $password = "bacon";
         $dbname = "bootsinc";
@@ -23,7 +23,7 @@ class ClienteTest extends \PHPUnit\Framework\TestCase {
 
     public function testListarCliente(){
         $obj = new ClienteDAO();
-        $servername = "localhost";
+        $servername = "127.0.0.1";
         $username = "root";
         $password = "bacon";
         $dbname = "bootsinc";
