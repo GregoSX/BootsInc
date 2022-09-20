@@ -25,7 +25,8 @@ include_once '../../persistence/VendedorDAO.php';
           WHERE cpf=".$_GET['cpf'];
     $result = mysqli_query($conn, $sql);
     $vetor = mysqli_fetch_array($result, MYSQLI_ASSOC);
-?>    
+?>
+  <input type="hidden" name="cpf" value="<?php echo $_GET['cpf'];  ?>">
   <table border="0" align="center" width="35%">
         <tr><td width="20%">CPF:</td>
             <td colspan="2" width="90%">
