@@ -13,7 +13,7 @@
 <?php
 
 include_once '../../persistence/BD.php';
-include_once '../../persistence/ProdutoDAO.PHP';
+include_once '../../persistence/ProdutoDAO.php';
 
 ?>
  <center><h3>Editar produto</h3></center>
@@ -25,7 +25,7 @@ include_once '../../persistence/ProdutoDAO.PHP';
           WHERE codProduto=".$_GET['codProduto'];
     $result = mysqli_query($conn, $sql);
     $vetor = mysqli_fetch_array($result, MYSQLI_ASSOC);
-?>    
+?>
   <input type="hidden" name="codProduto" value="<?php echo $_GET['codProduto'];  ?>">
   <table border="0" align="center" width="35%">
         <tr><td width="20%">Código:</td>

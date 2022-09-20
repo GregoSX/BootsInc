@@ -13,7 +13,7 @@
 <?php
 
 include_once '../../persistence/BD.php';
-include_once '../../persistence/ClienteDAO.PHP';
+include_once '../../persistence/ClienteDAO.php';
 
 ?>
  <center><h3>Editar cliente</h3></center>
@@ -25,7 +25,7 @@ include_once '../../persistence/ClienteDAO.PHP';
           WHERE idCliente=".$_GET['idCliente'];
     $result = mysqli_query($conn, $sql);
     $vetor = mysqli_fetch_array($result, MYSQLI_ASSOC);
-?>    
+?>
   <input type="hidden" name="idCliente" value="<?php echo $_GET['idCliente'];  ?>">
   <table border="0" align="center" width="35%">
         <tr><td width="20%">ID:</td>
