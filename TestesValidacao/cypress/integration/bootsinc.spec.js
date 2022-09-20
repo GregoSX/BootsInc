@@ -18,12 +18,12 @@ describe('BootsInc', () => {
 
         cy.get("[value=Excluir]").eq(0).click();
     });
-    it('devem poder editar um cliente', () => {
-        cy.visit('http://localhost:80/BootsInc/src/controller/controllerCliente/ListarCliente.php');
+    it('devem poder editar um produto', () => {
+        cy.visit('http://localhost:80/BootsInc/src/controller/controllerProduto/ListarProduto.php');
 
         cy.get("[value=Editar]").eq(0).click();
 
-        cy.get("[name=sobrenome]").clear().type("grego");
+        cy.get("[name=tamanho]").clear().type(20);
 
         cy.get("[type=submit]").click();
     });
