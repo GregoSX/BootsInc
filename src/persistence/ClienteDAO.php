@@ -4,12 +4,13 @@ class ClienteDAO {
     function __construct() {}
 
     function salvar($cliente, $conn) {
-        $sql = "INSERT INTO cliente (idCliente, cpf, primeiroNome, sobrenome, endereco) VALUES ('" . 
+        $sql = "INSERT INTO cliente (idCliente, cpf, primeiroNome, sobrenome, endereco, numCompras) VALUES ('" . 
                 $cliente->getIdCliente() . "', '" . 
                 $cliente->getCpf() . "', '" . 
                 $cliente->getPrimeiroNome() . "', '" . 
                 $cliente->getSobrenome() . "' , '". 
-                $cliente->getEndereco() . "')";
+                $cliente->getEndereco() . "' , '".
+                $cliente->getNumCompras() . "')";
         $res = $conn->query($sql);
         return $res;
     }
@@ -34,7 +35,8 @@ class ClienteDAO {
                         SET idCliente         ='".$_POST["idCliente"]."',
                             primeiroNome='"   .$_POST["primeiroNome"]."',
                             sobrenome='"       .$_POST["sobrenome"]."',
-                            endereco='"       .$_POST["endereco"]."'
+                            endereco='"       .$_POST["endereco"]."',
+                            numCompras='"       .$_POST["numCompras"]."'
                             WHERE idCliente=".$_POST["idCliente"];
         }
         mysqli_query($conn, $sql);
