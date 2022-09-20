@@ -6,13 +6,15 @@ class Cliente {
     private $primeiroNome;
     private $sobrenome;
     private $endereco;
+    private $numCompras;
 
-    function __construct($idCliente, $cpf, $primeiroNome, $sobrenome, $endereco) {
+    function __construct($idCliente, $cpf, $primeiroNome, $sobrenome, $endereco, $numCompras) {
         $this->idCliente = $idCliente;
         $this->cpf = $cpf;
         $this->primeiroNome = $primeiroNome;
         $this->sobrenome = $sobrenome;
         $this->endereco = $endereco;
+        $this->numCompras = $numCompras;
     }
 
     function getIdCliente() {
@@ -33,6 +35,10 @@ class Cliente {
 
     function getEndereco() {
         return $this->endereco;
+    }
+
+    function getNumCompras(){
+        return $this->numCompras;
     }
 }
 
