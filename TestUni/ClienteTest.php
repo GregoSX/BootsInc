@@ -9,7 +9,7 @@ class ClienteTest extends \PHPUnit\Framework\TestCase {
         $obj = new ClienteDAO();
         $servername = "127.0.0.1";
         $username = "root";
-        $password = "bacon";
+        $password = "Guizin123;";
         $dbname = "bootsinc";
         $con = mysqli_connect($servername, $username, $password, $dbname);
         $idCliente = 2;
@@ -17,7 +17,8 @@ class ClienteTest extends \PHPUnit\Framework\TestCase {
         $primeiroNome = "guilherme";
         $sobrenome = "grego";
         $endereco = "alameda rio claro 501";
-        $cliente = new Cliente($idCliente, $cpf, $primeiroNome, $sobrenome, $endereco);
+        $numCompras = 0;
+        $cliente = new Cliente($idCliente, $cpf, $primeiroNome, $sobrenome, $endereco, $numCompras);
         $this->assertEquals(true, $obj->salvar($cliente, $con));
     }
 
@@ -25,7 +26,7 @@ class ClienteTest extends \PHPUnit\Framework\TestCase {
         $obj = new ClienteDAO();
         $servername = "127.0.0.1";
         $username = "root";
-        $password = "bacon";
+        $password = "Guizin123;";
         $dbname = "bootsinc";
         $con = mysqli_connect($servername, $username, $password, $dbname);
         $this->assertEquals(true, $obj->listarCliente($con));
@@ -35,7 +36,7 @@ class ClienteTest extends \PHPUnit\Framework\TestCase {
         $obj = new ClienteDAO();
         $servername = "127.0.0.1";
         $username = "root";
-        $password = "bacon";
+        $password = "Guizin123;";
         $dbname = "bootsinc";
         $con=mysqli_connect($servername, $username, $password, $dbname);
         $this->assertEquals(true, $obj->excluirCliente(2, $con));
