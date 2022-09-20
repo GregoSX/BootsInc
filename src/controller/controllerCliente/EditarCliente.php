@@ -50,7 +50,12 @@ include_once '../../persistence/ClienteDAO.PHP';
         <tr><td width="20%">Endereço:</td>
             <td colspan="2" width="90%">
             <input type="text" name="endereco" value="<?php echo @$vetor['endereco']; ?> "size="70">
-        </td>
+            </td>
+        </tr>
+        <tr><td width="20%">N° Compras:</td>
+            <td colspan="2" width="90%">
+            <input type="text" name="endereco" value="<?php echo @$vetor['endereco']; ?> "size="70" disabled>
+            </td>
         </tr>
         <tr><td colspan="3" align="center" class="buttons">
             <input type="submit" value="Salvar">
