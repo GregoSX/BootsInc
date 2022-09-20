@@ -9,7 +9,7 @@
 <?php
 
 include_once '../../persistence/BD.php';
-include_once '../../persistence/ClienteDAO.PHP';
+include_once '../../persistence/ClienteDAO.php';
 
 $conn = new BD();
 $conn = $conn->getConnection();
