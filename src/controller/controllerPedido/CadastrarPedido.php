@@ -8,11 +8,12 @@ $idPedido = $_POST['idPedido'];
 $idProduto = $_POST['idProduto'];
 $quantidade = $_POST['quantidade'];
 $precoVendido = $_POST['precoVendido'];
+$statusPedido = $_POST['statusPedido'];
 
 $conn = new BD();
 $conn = $conn->getConnection();
 
-$pedido = new Pedido($idPedido, $idProduto, $quantidade, $precoVendido);
+$pedido = new Pedido($idPedido, $idProduto, $quantidade, $precoVendido, $statusPedido);
 
 $pedidodao = new PedidoDAO();
 $res = $pedidodao->salvar($pedido, $conn);

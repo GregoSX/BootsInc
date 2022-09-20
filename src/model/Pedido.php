@@ -5,12 +5,14 @@ class Pedido {
     private $idProduto;
     private $quantidade;
     private $precoVendido;
+    private $statusPedido;
 
-    function __construct($idPedido, $idProduto, $quantidade, $precoVendido) {
+    function __construct($idPedido, $idProduto, $quantidade, $precoVendido, $statusPedido) {
         $this->idPedido = $idPedido;
         $this->idProduto = $idProduto;
         $this->quantidade = $quantidade;
         $this->precoVendido = $precoVendido;
+        $this->statusPedido = $statusPedido;
     }
 
     function getIdPedido() {
@@ -28,6 +30,11 @@ class Pedido {
     function getPrecoVendido() {
         return $this->precoVendido;
     }
+
+    function getStatusPedido() {
+        return $this->statusPedido;
+    }
+
 }
 
 ?>

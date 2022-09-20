@@ -47,6 +47,11 @@ include_once '../../persistence/PedidoDAO.php';
             <td colspan="2" width="90%">
             <input type="number" step="0.01" min="0.01" max="9999.99" name="precoVendido" value="<?php echo @$vetor['precoVendido']; ?>" size="8">
         </td>
+        <tr><td width="20%">Status Pedido:</td>
+            <td colspan="2" width="90%">
+                <input type="text" name="statusPedido" value="<?php echo @$vetor['statusPedido']; ?>" size="30" disabled>
+            </td>
+        </tr>
         <tr><td colspan="3" align="center" class="buttons">
             <input type="submit" value="Salvar">
             <input type="button" value="Cancelar" onclick="location.href='./ListarPedido.php'">

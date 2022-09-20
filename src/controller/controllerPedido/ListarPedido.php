@@ -34,6 +34,7 @@ if($res->num_rows == 0) {
                     <th width="9%" style="text-align:center;"> ID Produto </th>
                     <th width="9%" style="text-align:center;"> Quantidade </th>
                     <th width="9%" style="text-align:center;"> Preço Vendido </th>
+                    <th width="9%" style="text-align:center;"> Status Pedido </th>
                     <th width="9%" style="text-align:center;"> Opções </th>
                 </tr>
 <?php
@@ -44,6 +45,7 @@ if($res->num_rows == 0) {
                     <td> <?php echo $linha['idProduto'];?> </td>
                     <td> <?php echo $linha['quantidade']; ?>  </td>
                     <td> <?php echo $linha['precoVendido'];?> </td>
+                    <td> <?php echo $linha['statusPedido'];?> </td>
                     <td style="text-align:center;">
                         <input type="button" value="Editar" onclick="location.href='EditarPedido.php?idPedido=<?php echo $linha['idPedido'] ?>'">
                         <input type="button" value="Excluir" onclick="location.href='ExcluirPedido.php?idPedido=<?php echo $linha['idPedido'] ?>'">
