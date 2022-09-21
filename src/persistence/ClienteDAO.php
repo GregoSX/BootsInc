@@ -4,13 +4,11 @@ class ClienteDAO {
     function __construct() {}
 
     function salvar($cliente, $conn) {
-        $sql = "INSERT INTO cliente (idCliente, cpf, primeiroNome, sobrenome, endereco, numCompras) VALUES ('" . 
-                $cliente->getIdCliente() . "', '" . 
-                $cliente->getCpf() . "', '" . 
-                $cliente->getPrimeiroNome() . "', '" . 
-                $cliente->getSobrenome() . "' , '". 
-                $cliente->getEndereco() . "' , '".
-                $cliente->getNumCompras() . "')";
+        $sql = "INSERT INTO cliente (cpf, primeiroNome, sobrenome, endereco) VALUES ('" .
+                $cliente->getCpf() . "', '" .
+                $cliente->getPrimeiroNome() . "', '" .
+                $cliente->getSobrenome() . "' , '".
+                $cliente->getEndereco() . "')";
         $res = $conn->query($sql);
         return $res;
     }

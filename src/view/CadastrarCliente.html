@@ -11,37 +11,27 @@
     <div class="container_form">
         <h1>Cadastro de Cliente</h1>
         <form class="form" action="../controller/controllerCliente/CadastrarCliente.php" method="post">
-            
-            <div class="form_grupo">
-                <label for="idCliente" class="form_label">ID</label>
-                <input type="number" name="idCliente" class="form_input" id="idCliente">
-            </div>
-            
+
             <div class="form_grupo">
                 <label for="cpf" class="form_label">CPF</label>
                 <input type="text" name="cpf" class="form_input" id="cpf" required minlength="11">
             </div>
-            
+
             <div class="form_grupo">
                 <label for="primeiroNome" class="form_label">Nome</label>
                 <input type="text" name="primeiroNome" class="form_input" id="primeiroNome"  required maxlength="30">
             </div>
-            
+
             <div class="form_grupo">
                 <label for="sobrenome" class="form_label">Sobrenome</label>
                 <input type="text" name="sobrenome" class="form_input" id="sobrenome" required maxlength="70">
-            </div>        
+            </div>
 
             <div class="form_grupo">
                 <label for="endereco" class="form_label">Endereço</label>
                 <input type="text" name="endereco" class="form_input" id="endereco" required maxlength="70">
             </div>
-            
-            <div class="form_grupo">
-                <label for="numCompras" class="form_label">N° Compras</label>
-                <input type="number" name="numCompras" class="form_input" id="numCompras" required maxlength="70">
-            </div>   
-          
+
             <div class="submit">
                 <input type="hidden" name="acao" value="enviar">
                 <button type="submit" name="Submit" class="submit_btn" >Cadastar</button>

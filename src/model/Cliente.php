@@ -1,24 +1,17 @@
 <?php
 
 class Cliente {
-    private $idCliente;
     private $cpf;
     private $primeiroNome;
     private $sobrenome;
     private $endereco;
     private $numCompras;
 
-    function __construct($idCliente, $cpf, $primeiroNome, $sobrenome, $endereco, $numCompras) {
-        $this->idCliente = $idCliente;
+    function __construct($cpf, $primeiroNome, $sobrenome, $endereco) {
         $this->cpf = $cpf;
         $this->primeiroNome = $primeiroNome;
         $this->sobrenome = $sobrenome;
         $this->endereco = $endereco;
-        $this->numCompras = $numCompras;
-    }
-
-    function getIdCliente() {
-        return $this->idCliente;
     }
 
     function getCpf() {
@@ -37,9 +30,6 @@ class Cliente {
         return $this->endereco;
     }
 
-    function getNumCompras(){
-        return $this->numCompras;
-    }
 }
 
 ?>

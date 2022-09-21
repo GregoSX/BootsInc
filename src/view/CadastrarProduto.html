@@ -11,32 +11,32 @@
     <div class="container_form">
         <h1>Cadastro de Produtos</h1>
         <form class="form" action="../controller/controllerProduto/CadastrarProduto.php" method="post">
-            
+
             <div class="form_grupo">
                 <label for="codProduto" class="form_label">Código</label>
                 <input type="text" name="codProduto" class="form_input" id="codProduto" required maxlength="14">
             </div>
-            
+
             <div class="form_grupo">
                 <label for="descricao" class="form_label">Descrição</label>
                 <input type="text" name="descricao" class="form_input" id="descricao" required maxlength="30">
             </div>
-            
+
             <div class="form_grupo">
                 <label for="preco" class="form_label">Preço</label>
                 <input type="number" name="preco" class="form_input" id="preco" step="0.01" min="0.01" max="9999.99"  required>
             </div>
-            
+
             <div class="form_grupo">
                 <label for="tamanho" class="form_label">Tamanho</label>
                 <input type="number" name="tamanho" class="form_input" id="tamanho" required>
-            </div>        
+            </div>
 
             <div class="form_grupo">
                 <label for="quantidadeEstoque" class="form_label">Quantidade</label>
                 <input type="number" name="quantidadeEstoque" class="form_input" id="quantidadeEstoque" required>
-            </div>        
-          
+            </div>
+
             <div class="submit">
                 <input type="hidden" name="acao" value="enviar">
                 <button type="submit" name="Submit" class="submit_btn" >Cadastar</button>
