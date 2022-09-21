@@ -22,39 +22,34 @@ include_once '../../persistence/ClienteDAO.php';
     $conn = $conn->getConnection();
     $sql = "SELECT cliente.*
           FROM cliente
-          WHERE idCliente=".$_GET['idCliente'];
+          WHERE cpf=".$_GET['cpf'];
     $result = mysqli_query($conn, $sql);
     $vetor = mysqli_fetch_array($result, MYSQLI_ASSOC);
 ?>
-  <input type="hidden" name="idCliente" value="<?php echo $_GET['idCliente'];  ?>">
+  <input type="hidden" name="cpf" value="<?php echo $_GET['cpf'];  ?>">
   <table border="0" align="center" width="35%">
-        <tr><td width="20%">ID:</td>
-            <td colspan="2" width="90%">
-            <input type="number" name="idCliente" value="<?php echo @$vetor['idCliente']; ?>" disabled>
-        </td>
-        </tr>
         <tr><td width="20%">CPF:</td>
             <td colspan="2" width="90%">
-                <input type="text" name="cpf" value="<?php echo @$vetor['cpf']; ?>" size="11" disabled>
+                <input type="text" name="cpf" value="<?php echo @$vetor['cpf']; ?>" size=auto disabled>
             </td>
         </tr>
         <tr><td width="20%">Nome:</td>
             <td colspan="2" width="90%">
-            <input type="text" name="primeiroNome" value="<?php echo @$vetor['primeiroNome']; ?>" size="30">
+            <input type="text" name="primeiroNome" value="<?php echo @$vetor['primeiroNome']; ?>" size=auto>
         </td>
         </tr>
         <tr><td width="20%">Sobrenome:</td>
-            <td><input type="text" name="sobrenome" value="<?php echo @$vetor['sobrenome']; ?>" size="70">
+            <td><input type="text" name="sobrenome" value="<?php echo @$vetor['sobrenome']; ?>" size=auto>
             </td>
         </tr>
         <tr><td width="20%">Endereço:</td>
             <td colspan="2" width="90%">
-            <input type="text" name="endereco" value="<?php echo @$vetor['endereco']; ?> "size="70">
+            <input type="text" name="endereco" value="<?php echo @$vetor['endereco']; ?> "size=auto>
             </td>
         </tr>
         <tr><td width="20%">N° Compras:</td>
             <td colspan="2" width="90%">
-            <input type="number" name="numCompras" placeholder="<?php echo @$vetor['numCompras']; ?> "size="70" disabled>
+            <input type="number" name="numCompras" placeholder="<?php echo @$vetor['numCompras']; ?> "size=auto disabled>
             </td>
         </tr>
         <tr><td colspan="3" align="center" class="buttons">

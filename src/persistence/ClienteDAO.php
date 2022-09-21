@@ -19,23 +19,22 @@ class ClienteDAO {
         return $res;
     }
 
-    function excluirCliente($idCliente, $conn) {
-        $sql = "DELETE FROM cliente WHERE idCliente = $idCliente";
+    function excluirCliente($cpf, $conn) {
+        $sql = "DELETE FROM cliente WHERE cpf = $cpf";
         $res = $conn->query($sql);
         return $res;
     }
 
     function editarCliente($conn) {
-        $sql = "SELECT idCliente FROM cliente WHERE idCliente=".$_POST["idCliente"];
+        $sql = "SELECT cpf FROM cliente WHERE cpf=".$_POST["cpf"];
         $result = mysqli_query($conn, $sql);
             if(mysqli_num_rows($result)!=0){
                 $sql = "UPDATE cliente
-                        SET idCliente         ='".$_POST["idCliente"]."',
-                            cpf         ='".$_POST["cpf"]."',
+                        SET cpf         ='".$_POST["cpf"]."',
                             primeiroNome='"   .$_POST["primeiroNome"]."',
                             sobrenome='"       .$_POST["sobrenome"]."',
                             endereco='"       .$_POST["endereco"]."'
-                            WHERE idCliente=".$_POST["idCliente"];
+                            WHERE cpf=".$_POST["cpf"];
         }
         mysqli_query($conn, $sql);
     }

@@ -30,7 +30,6 @@ if($res->num_rows == 0) {
 
 ?>
                 <tr border="1" frame="hsides" rules="rows" bgcolor='#D2691E;'>
-                    <th width="9%" style="text-align:center;"> ID </th>
                     <th width="9%" style="text-align:center;"> CPF </th>
                     <th width="9%" style="text-align:center;"> Nome </th>
                     <th width="9%" style="text-align:center;"> Endereço </th>
@@ -41,14 +40,13 @@ if($res->num_rows == 0) {
     while($linha = $res->fetch_assoc()) {
 ?>
                 <tr bgcolor="#d3d3d3" style="text-align:center;">
-                    <td> <?php echo $linha['idCliente'];  ?> </td>
                     <td> <?php echo $linha['cpf'];?> </td>
                     <td> <?php echo $linha['primeiroNome']." ".$linha['sobrenome'];?>  </td>
                     <td> <?php echo $linha['endereco'];?>  </td>
                     <td> <?php echo $linha['numCompras'];?>  </td>
                     <td style="text-align:center;">
-                        <input type="button" value="Editar" onclick="location.href='EditarCliente.php?idCliente=<?php echo $linha['idCliente'] ?>'">
-                        <input type="button" value="Excluir" onclick="location.href='ExcluirCliente.php?idCliente=<?php echo $linha['idCliente'] ?>'">
+                        <input type="button" value="Editar" onclick="location.href='EditarCliente.php?cpf=<?php echo $linha['cpf'] ?>'">
+                        <input type="button" value="Excluir" onclick="location.href='ExcluirCliente.php?cpf=<?php echo $linha['cpf'] ?>'">
                     </td>
                 </tr>
 <?php
