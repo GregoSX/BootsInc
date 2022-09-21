@@ -7,16 +7,14 @@ class Vendedor {
     private $endereco;
     private $salario;
     private $telefone;
-    private $numVendas;
 
-    function __construct($cpf, $primeiroNome, $sobrenome, $endereco, $salario, $telefone, $numVendas) {
+    function __construct($cpf, $primeiroNome, $sobrenome, $endereco, $salario, $telefone) {
         $this->cpf = $cpf;
         $this->primeiroNome = $primeiroNome;
         $this->sobrenome = $sobrenome;
         $this->endereco = $endereco;
         $this->salario = $salario;
         $this->telefone = $telefone;
-        $this->numVendas = $numVendas;
     }
 
     function getCpf() {
@@ -43,9 +41,6 @@ class Vendedor {
         return $this->telefone;
     }
 
-    function getNumVendas() {
-        return $this->numVendas;
-    }
 }
 
 ?>

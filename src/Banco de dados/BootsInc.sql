@@ -11,25 +11,21 @@ CREATE TABLE produto (
 );
 
 CREATE TABLE cliente (
-    cpf CHAR(11) NOT NULL,
+    cpf CHAR(11) NOT NULL PRIMARY KEY,
 	primeiroNome VARCHAR(30) NOT NULL,
 	sobrenome VARCHAR(70) NOT NULL,
     endereco VARCHAR(70) NOT NULL,
-    numCompras INT UNSIGNED DEFAULT 0,
-	PRIMARY KEY (cpf),
-	UNIQUE INDEX cpf_UNIQUE (cpf ASC) VISIBLE
+    numCompras INT UNSIGNED DEFAULT 0
 );
 
 CREATE TABLE vendedor (
-	cpf CHAR(11) NOT NULL,
+	cpf CHAR(11) NOT NULL PRIMARY KEY,
     primeiroNome VARCHAR(30) NOT NULL,
 	sobrenome VARCHAR(70) NOT NULL,
     endereco VARCHAR(70) NOT NULL,
     salario DECIMAL(6,2) NOT NULL,
     telefone VARCHAR(11) NOT NULL,
-    numVendas INT UNSIGNED,
-    UNIQUE INDEX cpf_UNIQUE (cpf ASC) VISIBLE,
-    PRIMARY KEY (cpf)
+    numVendas INT UNSIGNED DEFAULT 0
 );
 
 CREATE TABLE caixa (

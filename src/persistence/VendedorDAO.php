@@ -4,14 +4,13 @@ class VendedorDAO {
     function __construct() {}
 
     function salvar($vendedor, $conn) {
-        $sql = "INSERT INTO vendedor (cpf, primeiroNome, sobrenome, endereco, salario, telefone, numVendas) VALUES ('" .  
-                $vendedor->getCpf() . "', '" . 
-                $vendedor->getPrimeiroNome() . "', '" . 
+        $sql = "INSERT INTO vendedor (cpf, primeiroNome, sobrenome, endereco, salario, telefone) VALUES ('" .
+                $vendedor->getCpf() . "', '" .
+                $vendedor->getPrimeiroNome() . "', '" .
                 $vendedor->getSobrenome() . "' , '".
                 $vendedor->getEndereco() . "' , '".
                 $vendedor->getSalario() . "' , '".
-                $vendedor->getTelefone() . "' , '". 
-                $vendedor->getNumVendas() . "')";
+                $vendedor->getTelefone() . "')";
         $res = $conn->query($sql);
         return $res;
     }
@@ -38,8 +37,7 @@ class VendedorDAO {
                             sobrenome='"       .$_POST["sobrenome"]."',
                             endereco='"       .$_POST["endereco"]."',
                             salario='"       .$_POST["salario"]."',
-                            telefone='"       .$_POST["telefone"]."',
-                            numVendas='"       .$_POST["numVendas"]."'
+                            telefone='"       .$_POST["telefone"]."'
                             WHERE cpf=".$_POST["cpf"];
         }
         mysqli_query($conn, $sql);

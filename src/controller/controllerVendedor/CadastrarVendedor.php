@@ -10,12 +10,11 @@ $sobrenome = $_POST['sobrenome'];
 $endereco = $_POST['endereco'];
 $salario = $_POST['salario'];
 $telefone = $_POST['telefone'];
-$numVendas = $_POST['numVendas'];
 
 $conn = new BD();
 $conn = $conn->getConnection();
 
-$vendedor = new Vendedor($cpf, $primeiroNome, $sobrenome, $endereco, $salario, $telefone, $numVendas);
+$vendedor = new Vendedor($cpf, $primeiroNome, $sobrenome, $endereco, $salario, $telefone);
 
 $vendedordao = new VendedorDAO();
 $res = $vendedordao->salvar($vendedor, $conn);

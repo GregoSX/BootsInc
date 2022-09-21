@@ -35,31 +35,31 @@ include_once '../../persistence/VendedorDAO.php';
         </tr>
         <tr><td width="20%">Nome:</td>
             <td colspan="2" width="90%">
-            <input type="text" name="primeiroNome" value="<?php echo @$vetor['primeiroNome']; ?>" size="30">
+            <input type="text" name="primeiroNome" value="<?php echo @$vetor['primeiroNome']; ?>" size=auto>
             </td>
         </tr>
         <tr><td width="20%">Sobrenome:</td>
-            <td><input type="text" name="sobrenome" value="<?php echo @$vetor['sobrenome']; ?>" size="70">
+            <td><input type="text" name="sobrenome" value="<?php echo @$vetor['sobrenome']; ?>" size=auto>
             </td>
         </tr>
         <tr><td width="20%">Endereço:</td>
             <td colspan="2" width="90%">
-            <input type="text" name="endereco" value="<?php echo @$vetor['endereco']; ?> "size="70">
+            <input type="text" name="endereco" value="<?php echo @$vetor['endereco']; ?> "size=auto>
             </td>
         </tr>
         <tr><td width="20%">Salario:</td>
             <td colspan="2" width="90%">
-            <input type="number" name="salario" placeholder="<?php echo @$vetor['salario']; ?>" value="<?php echo @$vetor['salario']; ?> "size="70">
+            <input type="number" name="salario" placeholder="<?php echo @$vetor['salario']; ?>" value="<?php echo @$vetor['salario']; ?> "size=auto>
             </td>
         </tr>
         <tr><td width="20%">Telefone:</td>
             <td colspan="2" width="90%">
-            <input type="text" name="telefone" value="<?php echo @$vetor['telefone']; ?> "size="70">
+            <input type="text" name="telefone" value="<?php echo @$vetor['telefone']; ?> "size=auto>
             </td>
         </tr>
         <tr><td width="20%">N° Vendas:</td>
             <td colspan="2" width="90%">
-            <input type="number" name="numVendas" value="<?php echo @$vetor['numVendas']; ?> "size="70">
+            <input type="text" name="numVendas" value="<?php echo @$vetor['numVendas']; ?> "size=auto disabled>
             </td>
         </tr>
         <tr><td colspan="3" align="center" class="buttons">
