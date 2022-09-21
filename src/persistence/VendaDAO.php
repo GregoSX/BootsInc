@@ -4,10 +4,10 @@ class VendaDAO {
     function __construct() {}
 
     function salvar($venda, $conn) {
-        $sql = "INSERT INTO venda (idVenda, idPedido, cpfCliente, valorVenda) VALUES ('" . 
-                $venda->getIdVenda() . "', '" . 
-                $venda->getIdPedido() . "', '" . 
-                $venda->getCpfCliente() . "', '" . 
+        $sql = "INSERT INTO venda (idPedido, cpfVendedor, cpfCliente, valorVenda) VALUES ('" .
+                $venda->getIdPedido() . "', '" .
+                $venda->getCpfVendedor() . "', '" .
+                $venda->getCpfCliente() . "', '" .
                 $venda->getValorVenda() . "')";
         $res = $conn->query($sql);
         return $res;
@@ -30,7 +30,7 @@ class VendaDAO {
         $result = mysqli_query($conn, $sql);
             if(mysqli_num_rows($result)!=0){
                 $sql = "UPDATE venda
-                        SET 
+                        SET
                             valorVenda='"       .$_POST["valorVenda"]."'
                             WHERE idVenda=".$_POST["idVenda"];
         }

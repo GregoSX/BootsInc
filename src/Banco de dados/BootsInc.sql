@@ -76,7 +76,7 @@ CREATE TABLE venda (
 	REFERENCES cliente (cpf)
 );
 
--- Baixar estoque após um pedido
+-- Baixar estoque após uma venda ser efetuada
 DELIMITER //
 CREATE TRIGGER baixarEstoque
 AFTER INSERT ON pedido
@@ -102,13 +102,25 @@ DELIMITER ;
 
 -- Aumenta compras de cliente
 DELIMITER //
-CREATE TRIGGER comprasCliente
+CREATE TRIGGER aumentaCompraCliente
 AFTER INSERT ON venda
 FOR EACH ROW
 BEGIN
 	UPDATE cliente C
     SET C.numCompras = C.numCompras + 1
 	WHERE C.cpf = NEW.cpfCliente;
+END //
+DELIMITER ;
+
+-- Aumenta compras de cliente
+DELIMITER //
+CREATE TRIGGER aumentaVendaVendedor
+AFTER INSERT ON venda
+FOR EACH ROW
+BEGIN
+	UPDATE Vendedor V
+    SET V.numVendas = V.numVendas + 1
+	WHERE V.cpf = NEW.cpfVendedor;
 END //
 DELIMITER ;
 

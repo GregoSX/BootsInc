@@ -3,7 +3,7 @@
 class BD {
     private $servername = "localhost";
     private $username =  "root";
-    private $password =  "Guizin123;";
+    private $password =  "2506";
     private $bd = "bootsinc";
     private $conn = null;
 
@@ -12,7 +12,7 @@ class BD {
     function getConnection() {
         if($this->conn == null) {
             $this->conn = mysqli_connect($this->servername, $this->username, $this->password, $this->bd);
- 
+
         }
         if(!$this->conn) {
             die("Conexão falhou: ". $this->conn->connect_error);

@@ -11,27 +11,27 @@
     <div class="container_form">
         <h1>Cadastro de Venda</h1>
         <form class="form" action="../controller/controllerVenda/CadastrarVenda.php" method="post">
-            
-            <div class="form_grupo">
-                <label for="idVenda" class="form_label">ID Venda</label>
-                <input type="number" name="idVenda" class="form_input" id="idVenda">
-            </div>
-            
+
             <div class="form_grupo">
                 <label for="idPedido" class="form_label">ID Pedido</label>
                 <input type="number" name="idPedido" class="form_input" id="idPedido">
             </div>
-            
+
+            <div class="form_grupo">
+                <label for="cpfVendedor" class="form_label">CPF Vendedor</label>
+                <input type="text" name="cpfVendedor" class="form_input" id="cpfVendedor" minlength="11" maxlength="11">
+            </div>
+
             <div class="form_grupo">
                 <label for="cpfCliente" class="form_label">CPF Cliente</label>
                 <input type="text" name="cpfCliente" class="form_input" id="cpfCliente" minlength="11" maxlength="11">
             </div>
-            
+
             <div class="form_grupo">
                 <label for="valorVenda" class="form_label">Valor</label>
                 <input type="number" name="valorVenda" class="form_input" id="valorVenda" step="0.01" min="0.01" max="9999.99"  required>
-            </div>        
-          
+            </div>
+
             <div class="submit">
                 <input type="hidden" name="acao" value="enviar">
                 <button type="submit" name="Submit" class="submit_btn" >Cadastar</button>

@@ -30,8 +30,8 @@ if($res->num_rows == 0) {
 
 ?>
                 <tr border="1" frame="hsides" rules="rows" bgcolor='#D2691E;'>
-                    <th width="9%" style="text-align:center;"> ID Venda </th>
                     <th width="9%" style="text-align:center;"> ID Pedido </th>
+                    <th width="9%" style="text-align:center;"> CPF Vendedor </th>
                     <th width="9%" style="text-align:center;"> CPF Cliente </th>
                     <th width="9%" style="text-align:center;"> Valor </th>
                     <th width="9%" style="text-align:center;"> Opções </th>
@@ -40,8 +40,8 @@ if($res->num_rows == 0) {
     while($linha = $res->fetch_assoc()) {
 ?>
                 <tr bgcolor="#d3d3d3" style="text-align:center;">
-                    <td> <?php echo $linha['idVenda'];  ?> </td>
                     <td> <?php echo $linha['idPedido'];?> </td>
+                    <td> <?php echo $linha['cpfVendedor']; ?>  </td>
                     <td> <?php echo $linha['cpfCliente']; ?>  </td>
                     <td> <?php echo $linha['valorVenda'];?> </td>
                     <td style="text-align:center;">
