@@ -30,22 +30,22 @@ include_once '../../persistence/VendaDAO.php';
   <table border="0" align="center" width="35%">
         <tr><td width="20%">ID Venda:</td>
             <td colspan="2" width="90%">
-            <input type="text" name="idVenda" value="<?php echo @$vetor['idVenda']; ?>" size="14" disabled>
+            <input type="text" name="idVenda" value="<?php echo @$vetor['idVenda']; ?>" size=auto disabled>
         </td>
         </tr>
         <tr><td width="20%">ID Pedido:</td>
             <td colspan="2" width="90%">
-                <input type="text" name="idPedido" value="<?php echo @$vetor['idPedido']; ?>" maxlength="30" size="30" disabled>
+                <input type="text" name="idPedido" value="<?php echo @$vetor['idPedido']; ?>" maxlength="30" size=auto disabled>
             </td>
         </tr>
         </tr>
         <tr><td width="20%">CPF Cliente:</td>
-            <td><input type="number" name="cpfCliente" value="<?php echo @$vetor['cpfCliente']; ?>" size="8" disabled>
+            <td><input type="number" name="cpfCliente" value="<?php echo @$vetor['cpfCliente']; ?>" size=auto disabled>
             </td>
         </tr>
         <tr><td width="20%">Valor:</td>
             <td colspan="2" width="90%">
-            <input type="number" step="0.01" min="0.01" max="9999.99" name="valorVenda" value="<?php echo @$vetor['valorVenda']; ?>" size="8">
+            <input type="number" step="0.01" min="0.01" max="9999.99" name="valorVenda" value="<?php echo @$vetor['valorVenda']; ?>" size=auto>
         </td>
         <tr><td colspan="3" align="center" class="buttons">
             <input type="submit" value="Salvar">

@@ -30,26 +30,26 @@ include_once '../../persistence/ProdutoDAO.php';
   <table border="0" align="center" width="35%">
         <tr><td width="20%">Código:</td>
             <td colspan="2" width="90%">
-            <input type="number" name="codigo" value="<?php echo @$vetor['codigo']; ?>" maxlength="14" size="14" disabled>
+            <input type="number" name="codigo" value="<?php echo @$vetor['codigo']; ?>" maxlength="14" size=auto disabled>
         </td>
         </tr>
         <tr><td width="20%">Descrição:</td>
             <td colspan="2" width="90%">
-                <input type="text" name="descricao" value="<?php echo @$vetor['descricao']; ?>" maxlength="30" size="30">
+                <input type="text" name="descricao" value="<?php echo @$vetor['descricao']; ?>" maxlength="30" size=auto>
             </td>
         </tr>
         <tr><td width="20%">Preço:</td>
             <td colspan="2" width="90%">
-            <input type="number" step="0.01" min="0.01" max="9999.99" name="preco" value="<?php echo @$vetor['preco']; ?>" size="8">
+            <input type="number" step="0.01" min="0.01" max="9999.99" name="preco" value="<?php echo @$vetor['preco']; ?>" size=auto>
         </td>
         </tr>
         <tr><td width="20%">Tamanho:</td>
-            <td><input type="number" name="tamanho" value="<?php echo @$vetor['tamanho']; ?>" size="8">
+            <td><input type="number" name="tamanho" value="<?php echo @$vetor['tamanho']; ?>" size=auto>
             </td>
         </tr>
         <tr><td width="20%">Quantidade:</td>
             <td colspan="2" width="90%">
-            <input type="number" name="quantidadeEstoque" value="<?php echo @$vetor['quantidadeEstoque']; ?>" size="8">
+            <input type="number" name="quantidadeEstoque" value="<?php echo @$vetor['quantidadeEstoque']; ?>" size=auto>
         </td>
         </tr>
         <tr><td colspan="3" align="center" class="buttons">
