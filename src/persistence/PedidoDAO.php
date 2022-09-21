@@ -4,10 +4,9 @@ class PedidoDAO {
     function __construct() {}
 
     function salvar($pedido, $conn) {
-        $sql = "INSERT INTO pedido (idPedido, idProduto, quantidade, precoVendido) VALUES ('" . 
-                $pedido->getIdPedido() . "', '" . 
-                $pedido->getIdProduto() . "', " . 
-                $pedido->getQuantidade() . ", " . 
+        $sql = "INSERT INTO pedido (idProduto, quantidade, precoVendido) VALUES ('" .
+                $pedido->getIdProduto() . "', " .
+                $pedido->getQuantidade() . ", " .
                 $pedido->getPrecoVendido() . ")";
         $res = $conn->query($sql);
         return $res;
@@ -30,7 +29,7 @@ class PedidoDAO {
         $result = mysqli_query($conn, $sql);
             if(mysqli_num_rows($result)!=0){
                 $sql = "UPDATE pedido
-                        SET 
+                        SET
                             quantidade='"   .$_POST["quantidade"]."',
                             precoVendido='"       .$_POST["precoVendido"]."'
                             WHERE idPedido=".$_POST["idPedido"];

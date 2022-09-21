@@ -4,7 +4,6 @@ include_once '../../persistence/BD.php';
 include_once '../../model/Pedido.php';
 include_once '../../persistence/PedidoDAO.PHP';
 
-$idPedido = $_POST['idPedido'];
 $idProduto = $_POST['idProduto'];
 $quantidade = $_POST['quantidade'];
 $precoVendido = $_POST['precoVendido'];
@@ -13,7 +12,7 @@ $statusPedido = $_POST['statusPedido'];
 $conn = new BD();
 $conn = $conn->getConnection();
 
-$pedido = new Pedido($idPedido, $idProduto, $quantidade, $precoVendido, $statusPedido);
+$pedido = new Pedido($idProduto, $quantidade, $precoVendido, $statusPedido);
 
 $pedidodao = new PedidoDAO();
 $res = $pedidodao->salvar($pedido, $conn);
