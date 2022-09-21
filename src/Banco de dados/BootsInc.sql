@@ -1,25 +1,22 @@
 CREATE SCHEMA bootsinc;
--- DROP SCHEMA bootsinc;
+
 USE bootsinc;
 
 CREATE TABLE produto (
-	codProduto INT NOT NULL AUTO_INCREMENT,
+	codigo INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
 	descricao VARCHAR(30) NOT NULL,
 	preco DECIMAL(6,2) NOT NULL,
     tamanho INT UNSIGNED NOT NULL,
-    quantidadeEstoque INT UNSIGNED NOT NULL,
-	UNIQUE INDEX codProduto_UNIQUE (codProduto ASC) VISIBLE,
-	PRIMARY KEY (codProduto)
+    quantidadeEstoque INT UNSIGNED NOT NULL
 );
 
 CREATE TABLE cliente (
-	idCliente INT NOT NULL,
     cpf CHAR(11) NOT NULL,
 	primeiroNome VARCHAR(30) NOT NULL,
 	sobrenome VARCHAR(70) NOT NULL,
     endereco VARCHAR(70) NOT NULL,
     numCompras INT UNSIGNED DEFAULT 0,
-	PRIMARY KEY (idCliente),
+	PRIMARY KEY (cpf),
 	UNIQUE INDEX cpf_UNIQUE (cpf ASC) VISIBLE
 );
 
@@ -48,32 +45,32 @@ CREATE TABLE caixa (
 );
 
 CREATE TABLE pedido (
-	idPedido INT UNSIGNED AUTO_INCREMENT,
-    idProduto INT NOT NULL,
+	numPedido INT UNSIGNED AUTO_INCREMENT,
+    codProduto INT NOT NULL,
     quantidade INT UNSIGNED,
     precoVendido DECIMAL(6,2) NOT NULL,
     statusPedido VARCHAR(11) NOT NULL DEFAULT "Pendente",
-    UNIQUE INDEX idPedido_UNIQUE (idPedido ASC) VISIBLE,
-    PRIMARY KEY (idProduto, idPedido),
+    UNIQUE INDEX numPedido_UNIQUE (numPedido ASC) VISIBLE,
+    PRIMARY KEY (numPedido),
     CONSTRAINT
-    FOREIGN KEY (idProduto)
+    FOREIGN KEY (codProduto)
 	REFERENCES produto (codProduto)
     ON DELETE RESTRICT
 	ON UPDATE RESTRICT
 );
 
 CREATE TABLE venda (
-	idVenda INT UNSIGNED AUTO_INCREMENT,
-    idPedido INT UNSIGNED NOT NULL,
-    valorVenda DECIMAL(6,2) NOT NULL DEFAULT 0.00,
+	numVenda INT UNSIGNED AUTO_INCREMENT,
+    numPedido INT UNSIGNED NOT NULL,
+    valor DECIMAL(6,2) NOT NULL DEFAULT 0.00,
     cpfCliente CHAR(11) NOT NULL,
+    cpfVendedor CHAR(11) NOT NULL,
     
-    UNIQUE INDEX idVenda_UNIQUE (idVenda ASC) VISIBLE,
-    PRIMARY KEY (idVenda),
-    FOREIGN KEY (idPedido)
-	REFERENCES pedido (idPedido),
-    FOREIGN KEY (cpfCliente)
-	REFERENCES cliente (cpf)
+    UNIQUE INDEX numVenda_UNIQUE (numVenda ASC) VISIBLE,
+    PRIMARY KEY (numVenda),
+    FOREIGN KEY (numPedido) REFERENCES pedido (numPedido),
+    FOREIGN KEY (cpfCliente) REFERENCES cliente (cpf),
+    FOREIGN KEY (cpfVendedor) REFERENCES vendedor (cpf)
 );
 
 -- Baixar estoque após uma venda ser efetuada
