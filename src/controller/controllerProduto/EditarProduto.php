@@ -22,15 +22,15 @@ include_once '../../persistence/ProdutoDAO.php';
     $conn = $conn->getConnection();
     $sql = "SELECT produto.*
           FROM produto
-          WHERE codigo=".$_GET['codProduto'];
+          WHERE codigo=".$_GET['codigo'];
     $result = mysqli_query($conn, $sql);
     $vetor = mysqli_fetch_array($result, MYSQLI_ASSOC);
 ?>
-  <input type="hidden" name="codProduto" value="<?php echo $_GET['codProduto'];  ?>">
+  <input type="hidden" name="codigo" value="<?php echo $_GET['codigo'];  ?>">
   <table border="0" align="center" width="35%">
         <tr><td width="20%">Código:</td>
             <td colspan="2" width="90%">
-            <input type="number" name="codProduto" value="<?php echo @$vetor['codigo']; ?>" maxlength="14" size="14" disabled>
+            <input type="number" name="codigo" value="<?php echo @$vetor['codigo']; ?>" maxlength="14" size="14" disabled>
         </td>
         </tr>
         <tr><td width="20%">Descrição:</td>
