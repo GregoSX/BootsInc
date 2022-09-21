@@ -29,15 +29,13 @@ CREATE TABLE vendedor (
 );
 
 CREATE TABLE caixa (
-	cpf CHAR(11) NOT NULL,
+	cpf CHAR(11) NOT NULL PRIMARY KEY,
     primeiroNome VARCHAR(30) NOT NULL,
 	sobrenome VARCHAR(70) NOT NULL,
     endereco VARCHAR(70) NOT NULL,
     salario DECIMAL(6,2) NOT NULL,
     telefone VARCHAR(11) NOT NULL,
-    numCaixa INT UNSIGNED NOT NULL,
-    UNIQUE INDEX cpf_UNIQUE (cpf ASC) VISIBLE,
-    PRIMARY KEY (cpf)
+    numCaixa INT UNSIGNED NOT NULL
 );
 
 CREATE TABLE pedido (

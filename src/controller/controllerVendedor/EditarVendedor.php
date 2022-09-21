@@ -47,10 +47,10 @@ include_once '../../persistence/VendedorDAO.php';
             <input type="text" name="endereco" value="<?php echo @$vetor['endereco']; ?> "size=auto>
             </td>
         </tr>
-        <tr><td width="20%">Salario:</td>
+        <tr><td width="20%">Salário:</td>
             <td colspan="2" width="90%">
-            <input type="number" name="salario" placeholder="<?php echo @$vetor['salario']; ?>" value="<?php echo @$vetor['salario']; ?> "size=auto>
-            </td>
+            <input type="text" name="salario" value="<?php echo @$vetor['salario']; ?> "size=auto>
+        </td>
         </tr>
         <tr><td width="20%">Telefone:</td>
             <td colspan="2" width="90%">
