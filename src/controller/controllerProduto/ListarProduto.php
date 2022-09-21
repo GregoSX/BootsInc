@@ -41,14 +41,14 @@ if($res->num_rows == 0) {
     while($linha = $res->fetch_assoc()) {
 ?>
                 <tr bgcolor="#d3d3d3" style="text-align:center;">
-                    <td> <?php echo $linha['codProduto'];  ?> </td>
+                    <td> <?php echo $linha['codigo'];  ?> </td>
                     <td> <?php echo $linha['descricao'];?> </td>
                     <td> <?php echo $linha['preco']; ?>  </td>
                     <td> <?php echo $linha['tamanho'];?> </td>
                     <td> <?php echo $linha['quantidadeEstoque'];?>  </td>
                     <td style="text-align:center;">
-                        <input type="button" value="Editar" onclick="location.href='EditarProduto.php?codProduto=<?php echo $linha['codProduto'] ?>'">
-                        <input type="button" value="Excluir" onclick="location.href='ExcluirProduto.php?codProduto=<?php echo $linha['codProduto'] ?>'">
+                        <input type="button" value="Editar" onclick="location.href='EditarProduto.php?codProduto=<?php echo $linha['codigo'] ?>'">
+                        <input type="button" value="Excluir" onclick="location.href='ExcluirProduto.php?codProduto=<?php echo $linha['codigo'] ?>'">
                     </td>
                 </tr>
 <?php
