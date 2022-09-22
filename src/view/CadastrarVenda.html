@@ -13,23 +13,23 @@
         <form class="form" action="../controller/controllerVenda/CadastrarVenda.php" method="post">
 
             <div class="form_grupo">
-                <label for="idPedido" class="form_label">ID Pedido</label>
-                <input type="number" name="idPedido" class="form_input" id="idPedido">
+                <label for="numPedido" class="form_label">Número do Pedido</label>
+                <input type="number" name="numPedido" class="form_input" id="numPedido">
             </div>
 
             <div class="form_grupo">
-                <label for="cpfVendedor" class="form_label">CPF Vendedor</label>
+                <label for="cpfVendedor" class="form_label">CPF do Vendedor</label>
                 <input type="text" name="cpfVendedor" class="form_input" id="cpfVendedor" minlength="11" maxlength="11">
             </div>
 
             <div class="form_grupo">
-                <label for="cpfCliente" class="form_label">CPF Cliente</label>
+                <label for="cpfCliente" class="form_label">CPF do Cliente</label>
                 <input type="text" name="cpfCliente" class="form_input" id="cpfCliente" minlength="11" maxlength="11">
             </div>
 
             <div class="form_grupo">
-                <label for="valorVenda" class="form_label">Valor</label>
-                <input type="number" name="valorVenda" class="form_input" id="valorVenda" step="0.01" min="0.01" max="9999.99"  required>
+                <label for="desconto" class="form_label">Desconto</label>
+                <input type="number" name="desconto" class="form_input" id="desconto" step="1" min="0" max="100"  required>
             </div>
 
             <div class="submit">

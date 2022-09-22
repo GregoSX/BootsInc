@@ -22,20 +22,20 @@ include_once '../../persistence/VendaDAO.php';
     $conn = $conn->getConnection();
     $sql = "SELECT *
           FROM venda
-          WHERE idVenda=".$_GET['idVenda'];
+          WHERE numero=".$_GET['numero'];
     $result = mysqli_query($conn, $sql);
     $vetor = mysqli_fetch_array($result, MYSQLI_ASSOC);
 ?>
-  <input type="hidden" name="idVenda" value="<?php echo $_GET['idVenda'];  ?>">
+  <input type="hidden" name="numero" value="<?php echo $_GET['numero'];  ?>">
   <table border="0" align="center" width="35%">
-        <tr><td width="20%">ID Venda:</td>
+        <tr><td width="20%">Número da Venda:</td>
             <td colspan="2" width="90%">
-            <input type="text" name="idVenda" value="<?php echo @$vetor['idVenda']; ?>" size=auto disabled>
+            <input type="text" name="numero" value="<?php echo @$vetor['numero']; ?>" size=auto disabled>
         </td>
         </tr>
         <tr><td width="20%">ID Pedido:</td>
             <td colspan="2" width="90%">
-                <input type="text" name="idPedido" value="<?php echo @$vetor['idPedido']; ?>" maxlength="30" size=auto disabled>
+                <input type="text" name="numPedido" value="<?php echo @$vetor['numPedido']; ?>" maxlength="30" size=auto disabled>
             </td>
         </tr>
         </tr>
@@ -43,9 +43,13 @@ include_once '../../persistence/VendaDAO.php';
             <td><input type="number" name="cpfCliente" value="<?php echo @$vetor['cpfCliente']; ?>" size=auto disabled>
             </td>
         </tr>
+        <tr><td width="20%">Desconto:</td>
+            <td colspan="2" width="90%">
+            <input type="number" step="1" min="0" max="100" name="desconto" value="<?php echo @$vetor['desconto']; ?>" size=auto>
+        </td>
         <tr><td width="20%">Valor:</td>
             <td colspan="2" width="90%">
-            <input type="number" step="0.01" min="0.01" max="9999.99" name="valorVenda" value="<?php echo @$vetor['valorVenda']; ?>" size=auto>
+            <input type="number" step="0.01" min="0.01" max="9999.99" name="valor" value="<?php echo @$vetor['valor']; ?>" size=auto disabled>
         </td>
         <tr><td colspan="3" align="center" class="buttons">
             <input type="submit" value="Salvar">

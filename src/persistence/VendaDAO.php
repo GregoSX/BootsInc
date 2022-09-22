@@ -4,11 +4,11 @@ class VendaDAO {
     function __construct() {}
 
     function salvar($venda, $conn) {
-        $sql = "INSERT INTO venda (idPedido, cpfVendedor, cpfCliente, valorVenda) VALUES ('" .
-                $venda->getIdPedido() . "', '" .
+        $sql = "INSERT INTO venda (numPedido, cpfVendedor, cpfCliente, desconto) VALUES ('" .
+                $venda->getNumPedido() . "', '" .
                 $venda->getCpfVendedor() . "', '" .
                 $venda->getCpfCliente() . "', '" .
-                $venda->getValorVenda() . "')";
+                $venda->getDesconto() . "')";
         $res = $conn->query($sql);
         return $res;
     }
@@ -19,20 +19,20 @@ class VendaDAO {
         return $res;
     }
 
-    function excluirVenda($idVenda, $conn) {
-        $sql = "DELETE FROM venda WHERE idVenda = $idVenda";
+    function excluirVenda($numero, $conn) {
+        $sql = "DELETE FROM venda WHERE numero = $numero";
         $res = $conn->query($sql);
         return $res;
     }
 
     function editarVenda($conn) {
-        $sql = "SELECT idVenda FROM venda WHERE idVenda=".$_POST["idVenda"];
+        $sql = "SELECT numero FROM venda WHERE numero=".$_POST["numero"];
         $result = mysqli_query($conn, $sql);
             if(mysqli_num_rows($result)!=0){
                 $sql = "UPDATE venda
                         SET
-                            valorVenda='"       .$_POST["valorVenda"]."'
-                            WHERE idVenda=".$_POST["idVenda"];
+                            desconto='"       .$_POST["desconto"]."'
+                            WHERE numero=".$_POST["numero"];
         }
         mysqli_query($conn, $sql);
     }

@@ -49,7 +49,32 @@ CREATE TABLE pedido (
     FOREIGN KEY (codProduto)
     REFERENCES produto (codigo)
     ON DELETE RESTRICT
-	ON UPDATE RESTRICT
+    ON UPDATE RESTRICT
+);
+
+CREATE TABLE venda (
+    numero INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    numPedido INT UNSIGNED NOT NULL,
+    valor DECIMAL(6,2) NOT NULL DEFAULT 0.00,
+    desconto INT UNSIGNED NOT NULL,
+    cpfCliente CHAR(11) NOT NULL,
+    cpfVendedor CHAR(11) NOT NULL,
+
+    CONSTRAINT fk_pedido
+    FOREIGN KEY (numPedido)
+    REFERENCES pedido (numero)
+    ON DELETE RESTRICT
+    ON UPDATE RESTRICT,
+    CONSTRAINT fk_vendedor
+    FOREIGN KEY (cpfVendedor)
+    REFERENCES vendedor (cpf)
+    ON DELETE RESTRICT
+    ON UPDATE RESTRICT,
+    CONSTRAINT fk_cliente
+    FOREIGN KEY (cpfCliente)
+    REFERENCES cliente (cpf)
+    ON DELETE RESTRICT
+    ON UPDATE RESTRICT
 );
 
 /*
@@ -65,20 +90,6 @@ BEGIN
 	WHERE S.codigo = NEW.codProduto;
 END //
 DELIMITER ;
-
-CREATE TABLE venda (
-	numVenda INT UNSIGNED AUTO_INCREMENT,
-    numPedido INT UNSIGNED NOT NULL,
-    valor DECIMAL(6,2) NOT NULL DEFAULT 0.00,
-    cpfCliente CHAR(11) NOT NULL,
-    cpfVendedor CHAR(11) NOT NULL,
-
-    UNIQUE INDEX numVenda_UNIQUE (numVenda ASC) VISIBLE,
-    PRIMARY KEY (numVenda),
-    FOREIGN KEY (numPedido) REFERENCES pedido (numPedido),
-    FOREIGN KEY (cpfCliente) REFERENCES cliente (cpf),
-    FOREIGN KEY (cpfVendedor) REFERENCES vendedor (cpf)
-);
 
 -- Baixar estoque após uma venda ser efetuada
 DELIMITER //

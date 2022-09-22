@@ -1,20 +1,20 @@
 <?php
 
 class Venda {
-    private $idPedido;
+    private $numPedido;
     private $cpfVendedor;
     private $cpfCliente;
-    private $valorVenda;
+    private $desconto;
 
-    function __construct($idPedido, $cpfVendedor, $cpfCliente, $valorVenda) {
-        $this->idPedido = $idPedido;
+    function __construct($numPedido, $cpfVendedor, $cpfCliente, $desconto) {
+        $this->numPedido = $numPedido;
         $this->cpfVendedor = $cpfVendedor;
         $this->cpfCliente = $cpfCliente;
-        $this->valorVenda = $valorVenda;
+        $this->desconto = $desconto;
     }
 
-    function getIdPedido() {
-        return $this->idPedido;
+    function getNumPedido() {
+        return $this->numPedido;
     }
 
     function getCpfVendedor() {
@@ -25,9 +25,10 @@ class Venda {
         return $this->cpfCliente;
     }
 
-    function getValorVenda() {
-        return $this->valorVenda;
+    function getDesconto() {
+        return $this->desconto;
     }
+
 }
 
 ?>

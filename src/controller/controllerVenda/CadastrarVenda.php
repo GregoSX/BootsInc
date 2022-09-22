@@ -4,15 +4,15 @@ include_once '../../persistence/BD.php';
 include_once '../../model/Venda.php';
 include_once '../../persistence/VendaDAO.php';
 
-$idPedido = $_POST['idPedido'];
+$numPedido = $_POST['numPedido'];
 $cpfVendedor = $_POST['cpfVendedor'];
 $cpfCliente = $_POST['cpfCliente'];
-$valorVenda = $_POST['valorVenda'];
+$desconto = $_POST['desconto'];
 
 $conn = new BD();
 $conn = $conn->getConnection();
 
-$caixa = new Venda($idPedido, $cpfVendedor, $cpfCliente, $valorVenda);
+$caixa = new Venda($numPedido, $cpfVendedor, $cpfCliente, $desconto);
 
 $vendadao = new VendaDAO();
 $res = $vendadao->salvar($caixa, $conn);
