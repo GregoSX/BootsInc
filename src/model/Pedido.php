@@ -1,32 +1,20 @@
 <?php
 
 class Pedido {
-    private $idProduto;
+    private $codProduto;
     private $quantidade;
-    private $precoVendido;
-    private $statusPedido;
 
-    function __construct($idProduto, $quantidade, $precoVendido, $statusPedido) {
-        $this->idProduto = $idProduto;
+    function __construct($codProduto, $quantidade) {
+        $this->codProduto = $codProduto;
         $this->quantidade = $quantidade;
-        $this->precoVendido = $precoVendido;
-        $this->statusPedido = $statusPedido;
     }
 
-    function getIdProduto() {
-        return $this->idProduto;
+    function getCodProduto() {
+        return $this->codProduto;
     }
 
     function getQuantidade() {
         return $this->quantidade;
-    }
-
-    function getPrecoVendido() {
-        return $this->precoVendido;
-    }
-
-    function getStatusPedido() {
-        return $this->statusPedido;
     }
 
 }

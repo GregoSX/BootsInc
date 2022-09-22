@@ -4,10 +4,9 @@ class PedidoDAO {
     function __construct() {}
 
     function salvar($pedido, $conn) {
-        $sql = "INSERT INTO pedido (idProduto, quantidade, precoVendido) VALUES ('" .
-                $pedido->getIdProduto() . "', " .
-                $pedido->getQuantidade() . ", " .
-                $pedido->getPrecoVendido() . ")";
+        $sql = "INSERT INTO pedido (codProduto, quantidade) VALUES ('" .
+                $pedido->getCodProduto() . "', " .
+                $pedido->getQuantidade() . ");";
         $res = $conn->query($sql);
         return $res;
     }
@@ -18,21 +17,20 @@ class PedidoDAO {
         return $res;
     }
 
-    function excluirPedido($idPedido, $conn) {
-        $sql = "DELETE FROM pedido WHERE idPedido = $idPedido";
+    function excluirPedido($numero, $conn) {
+        $sql = "DELETE FROM pedido WHERE numero = $numero";
         $res = $conn->query($sql);
         return $res;
     }
 
     function editarPedido($conn) {
-        $sql = "SELECT idPedido FROM pedido WHERE idPedido=".$_POST["idPedido"];
+        $sql = "SELECT numero FROM pedido WHERE numero=".$_POST["numero"];
         $result = mysqli_query($conn, $sql);
             if(mysqli_num_rows($result)!=0){
                 $sql = "UPDATE pedido
                         SET
-                            quantidade='"   .$_POST["quantidade"]."',
-                            precoVendido='"       .$_POST["precoVendido"]."'
-                            WHERE idPedido=".$_POST["idPedido"];
+                            quantidade='"   .$_POST["quantidade"]."'
+                            WHERE numero=".$_POST["numero"];
         }
         mysqli_query($conn, $sql);
     }

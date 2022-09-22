@@ -39,19 +39,32 @@ CREATE TABLE caixa (
 );
 
 CREATE TABLE pedido (
-	numPedido INT UNSIGNED AUTO_INCREMENT,
+    numero INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
     codProduto INT NOT NULL,
     quantidade INT UNSIGNED,
-    precoVendido DECIMAL(6,2) NOT NULL,
-    statusPedido VARCHAR(11) NOT NULL DEFAULT "Pendente",
-    UNIQUE INDEX numPedido_UNIQUE (numPedido ASC) VISIBLE,
-    PRIMARY KEY (numPedido),
-    CONSTRAINT
+    valor DECIMAL(6,2) NOT NULL DEFAULT 0.00,
+    status VARCHAR(11) NOT NULL DEFAULT "Pendente",
+
+    CONSTRAINT fk_produto
     FOREIGN KEY (codProduto)
-	REFERENCES produto (codProduto)
+    REFERENCES produto (codigo)
     ON DELETE RESTRICT
 	ON UPDATE RESTRICT
 );
+
+/*
+
+-- Calcula valor do pedido
+DELIMITER //
+CREATE TRIGGER valorPedido
+AFTER INSERT ON pedido
+FOR EACH ROW
+BEGIN
+	UPDATE pedido P, produto S
+	SET p.valor = p.valor + NEW.quantidade * S.preco
+	WHERE S.codigo = NEW.codProduto;
+END //
+DELIMITER ;
 
 CREATE TABLE venda (
 	numVenda INT UNSIGNED AUTO_INCREMENT,
@@ -59,7 +72,7 @@ CREATE TABLE venda (
     valor DECIMAL(6,2) NOT NULL DEFAULT 0.00,
     cpfCliente CHAR(11) NOT NULL,
     cpfVendedor CHAR(11) NOT NULL,
-    
+
     UNIQUE INDEX numVenda_UNIQUE (numVenda ASC) VISIBLE,
     PRIMARY KEY (numVenda),
     FOREIGN KEY (numPedido) REFERENCES pedido (numPedido),
@@ -126,3 +139,5 @@ BEGIN
 	WHERE P.idPedido = NEW.idPedido;
 END //
 DELIMITER ;
+
+*/

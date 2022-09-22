@@ -22,20 +22,20 @@ include_once '../../persistence/PedidoDAO.php';
     $conn = $conn->getConnection();
     $sql = "SELECT *
           FROM pedido
-          WHERE idPedido=".$_GET['idPedido'];
+          WHERE numero=".$_GET['numero'];
     $result = mysqli_query($conn, $sql);
     $vetor = mysqli_fetch_array($result, MYSQLI_ASSOC);
 ?>
-  <input type="hidden" name="idPedido" value="<?php echo $_GET['idPedido'];  ?>">
+  <input type="hidden" name="numero" value="<?php echo $_GET['numero'];  ?>">
   <table border="0" align="center" width="35%">
-        <tr><td width="20%">ID Pedido:</td>
+        <tr><td width="20%">Número do Pedido:</td>
             <td colspan="2" width="90%">
-            <input type="text" name="idPedido" value="<?php echo @$vetor['idPedido']; ?>" size=auto disabled>
+            <input type="text" name="numero" value="<?php echo @$vetor['numero']; ?>" size=auto disabled>
         </td>
         </tr>
-        <tr><td width="20%">ID Produto:</td>
+        <tr><td width="20%">Código do Produto:</td>
             <td colspan="2" width="90%">
-                <input type="text" name="idProduto" value="<?php echo @$vetor['idProduto']; ?>" maxlength="30" size=auto disabled>
+                <input type="text" name="codProduto" value="<?php echo @$vetor['codProduto']; ?>" maxlength="30" size=auto disabled>
             </td>
         </tr>
         </tr>
@@ -43,13 +43,13 @@ include_once '../../persistence/PedidoDAO.php';
             <td><input type="number" name="quantidade" value="<?php echo @$vetor['quantidade']; ?>" size=auto>
             </td>
         </tr>
-        <tr><td width="20%">Preço Vendido:</td>
+        <tr><td width="20%">Valor do Pedidoo:</td>
             <td colspan="2" width="90%">
-            <input type="number" step="0.01" min="0.01" max="9999.99" name="precoVendido" value="<?php echo @$vetor['precoVendido']; ?>" size=auto>
+            <input type="text" step="0.01" min="0.01" max="9999.99" name="valor" value="<?php echo @$vetor['valor']; ?>" size=auto disabled>
         </td>
         <tr><td width="20%">Status Pedido:</td>
             <td colspan="2" width="90%">
-                <input type="text" name="statusPedido" value="<?php echo @$vetor['statusPedido']; ?>" size=auto disabled>
+                <input type="text" name="status" value="<?php echo @$vetor['status']; ?>" size=auto disabled>
             </td>
         </tr>
         <tr><td colspan="3" align="center" class="buttons">

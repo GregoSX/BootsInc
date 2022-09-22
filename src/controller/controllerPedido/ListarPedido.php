@@ -41,14 +41,14 @@ if($res->num_rows == 0) {
     while($linha = $res->fetch_assoc()) {
 ?>
                 <tr bgcolor="#d3d3d3" style="text-align:center;">
-                    <td> <?php echo $linha['idPedido'];  ?> </td>
-                    <td> <?php echo $linha['idProduto'];?> </td>
+                    <td> <?php echo $linha['numero'];  ?> </td>
+                    <td> <?php echo $linha['codProduto'];?> </td>
                     <td> <?php echo $linha['quantidade']; ?>  </td>
-                    <td> <?php echo $linha['precoVendido'];?> </td>
-                    <td> <?php echo $linha['statusPedido'];?> </td>
+                    <td> <?php echo $linha['valor'];?> </td>
+                    <td> <?php echo $linha['status'];?> </td>
                     <td style="text-align:center;">
-                        <input type="button" value="Editar" onclick="location.href='EditarPedido.php?idPedido=<?php echo $linha['idPedido'] ?>'">
-                        <input type="button" value="Excluir" onclick="location.href='ExcluirPedido.php?idPedido=<?php echo $linha['idPedido'] ?>'">
+                        <input type="button" value="Editar" onclick="location.href='EditarPedido.php?numero=<?php echo $linha['numero'] ?>'">
+                        <input type="button" value="Excluir" onclick="location.href='ExcluirPedido.php?numero=<?php echo $linha['numero'] ?>'">
                     </td>
                 </tr>
 <?php
