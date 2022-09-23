@@ -4,6 +4,7 @@ include_once 'VendedorDAO.php';
 include_once 'ClienteDAO.php';
 include_once 'ProdutoDAO.php';
 include_once 'PedidoDAO.php';
+include_once 'VendedorDAO.php';
 
 class VendaDAO {
     function __construct() {}
