@@ -8,12 +8,11 @@ $codigo = $_POST['codigo'];
 $descricao = $_POST['descricao'];
 $preco = $_POST['preco'];
 $tamanho = $_POST['tamanho'];
-$quantidadeEstoque = $_POST['quantidadeEstoque'];
 
 $conn = new BD();
 $conn = $conn->getConnection();
 
-$prod = new Produto($codigo, $descricao, $preco, $tamanho, $quantidadeEstoque);
+$prod = new Produto($codigo, $descricao, $preco, $tamanho);
 
 $produtodao = new ProdutoDAO();
 $res = $produtodao->salvar($prod, $conn);

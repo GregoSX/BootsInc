@@ -5,14 +5,12 @@ class Produto {
     private $descricao;
     private $preco;
     private $tamanho;
-    private $quantidadeEstoque;
 
-    function __construct($codigo, $descricao, $preco, $tamanho, $quantidadeEstoque) {
+    function __construct($codigo, $descricao, $preco, $tamanho) {
         $this->codigo = $codigo;
         $this->descricao = $descricao;
         $this->preco = $preco;
         $this->tamanho = $tamanho;
-        $this->quantidadeEstoque = $quantidadeEstoque;
     }
 
     function getCodProduto() {
@@ -31,9 +29,6 @@ class Produto {
         return $this->tamanho;
     }
 
-    function getQuantidadeEstoque() {
-        return $this->quantidadeEstoque;
-    }
 }
 
 ?>

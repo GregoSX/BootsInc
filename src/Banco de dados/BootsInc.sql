@@ -6,9 +6,7 @@ CREATE TABLE produto (
 	codigo INT NOT NULL PRIMARY KEY,
 	descricao VARCHAR(30) NOT NULL,
 	preco DECIMAL(6,2) NOT NULL,
-    tamanho INT UNSIGNED NOT NULL,
-    quantidadeEstoque INT UNSIGNED NOT NULL, 
-    totalVendido DECIMAL(9,2) NOT NULL DEFAULT 0.00
+    tamanho INT UNSIGNED NOT NULL
 );
 
 CREATE TABLE cliente (

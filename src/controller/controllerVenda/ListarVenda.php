@@ -30,10 +30,11 @@ if($res->num_rows == 0) {
 
 ?>
                 <tr border="1" frame="hsides" rules="rows" bgcolor='#D2691E;'>
-                    <th width="9%" style="text-align:center;"> ID Pedido </th>
+                    <th width="9%" style="text-align:center;"> Número da Venda </th>
+                    <th width="9%" style="text-align:center;"> Número do Pedido </th>
                     <th width="9%" style="text-align:center;"> CPF Vendedor </th>
                     <th width="9%" style="text-align:center;"> CPF Cliente </th>
-                    <th width="9%" style="text-align:center;"> Desconto </th>
+                    <th width="9%" style="text-align:center;"> Desconto (%) </th>
                     <th width="9%" style="text-align:center;"> Valor </th>
                     <th width="9%" style="text-align:center;"> Opções </th>
                 </tr>
@@ -41,6 +42,7 @@ if($res->num_rows == 0) {
     while($linha = $res->fetch_assoc()) {
 ?>
                 <tr bgcolor="#d3d3d3" style="text-align:center;">
+                    <td> <?php echo $linha['numero'];?> </td>
                     <td> <?php echo $linha['numPedido'];?> </td>
                     <td> <?php echo $linha['cpfVendedor']; ?>  </td>
                     <td> <?php echo $linha['cpfCliente']; ?>  </td>

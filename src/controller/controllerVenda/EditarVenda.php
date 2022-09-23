@@ -43,7 +43,7 @@ include_once '../../persistence/VendaDAO.php';
             <td><input type="number" name="cpfCliente" value="<?php echo @$vetor['cpfCliente']; ?>" size=auto disabled>
             </td>
         </tr>
-        <tr><td width="20%">Desconto:</td>
+        <tr><td width="20%">Desconto (%):</td>
             <td colspan="2" width="90%">
             <input type="number" step="1" min="0" max="100" name="desconto" value="<?php echo @$vetor['desconto']; ?>" size=auto>
         </td>

@@ -47,11 +47,6 @@ include_once '../../persistence/ProdutoDAO.php';
             <td><input type="number" name="tamanho" value="<?php echo @$vetor['tamanho']; ?>" size=auto>
             </td>
         </tr>
-        <tr><td width="20%">Quantidade:</td>
-            <td colspan="2" width="90%">
-            <input type="number" name="quantidadeEstoque" value="<?php echo @$vetor['quantidadeEstoque']; ?>" size=auto>
-        </td>
-        </tr>
         <tr><td colspan="3" align="center" class="buttons">
             <input type="submit" value="Salvar">
             <input type="button" value="Cancelar" onclick="location.href='./ListarProduto.php'">

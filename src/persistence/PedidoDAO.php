@@ -11,29 +11,7 @@ class PedidoDAO {
                 $pedido->getQuantidade() . ");";
         $res = $conn->query($sql);
         $this->calcularValor($pedido, $conn);
-        $this->decrementarQuantidadeProduto($pedido, $conn);
         return $res;
-    }
-
-
-    function decrementarQuantidadeProduto($pedido, $conn) {
-        $sql = "UPDATE produto p " .
-               "SET p.quantidadeEstoque = p.quantidadeEstoque - '" . $pedido->getQuantidade() . "'" .
-               "WHERE p.codigo = '" . $pedido->getCodProduto() . "'";
-        $res = $conn->query($sql);
-        return $res;
-    }
-
-    function getCodProduto($numero, $conn) {
-        $codigo = 0;
-        $pedidodao = new pedidoDAO();
-        $res = $pedidodao->listarPedido($conn);
-        while($linha = $res->fetch_assoc()) {
-            if ($linha['numero'] == $numero){
-                $codigo = $linha['codProduto'];
-            }
-        }
-        return $codigo;
     }
 
     function getQuantidadePedida($numero, $conn) {
@@ -46,16 +24,6 @@ class PedidoDAO {
             }
         }
         return $quantidade;
-    }
-
-    function incrementarQuantidadeProduto($numero, $conn) {
-        $codigo = $this-> getCodProduto($numero, $conn);
-        $quantidade = $this->getQuantidadePedida($numero, $conn);
-        $sql = "UPDATE produto p " .
-               "SET p.quantidadeEstoque = p.quantidadeEstoque + '" . $quantidade . "' " .
-               "WHERE p.codigo = '" . $codigo . "'";
-        $res = $conn->query($sql);
-        return $res;
     }
 
     function calcularValor($pedido, $conn) {
@@ -86,7 +54,6 @@ class PedidoDAO {
     }
 
     function excluirPedido($numero, $conn) {
-        $this->incrementarQuantidadeProduto($numero, $conn);
         $sql = "DELETE FROM pedido WHERE numero = $numero";
         $res = $conn->query($sql);
         return $res;
@@ -98,8 +65,9 @@ class PedidoDAO {
             if(mysqli_num_rows($result)!=0){
                 $sql = "UPDATE pedido
                         SET
+                            valor = valor * ('" . $_POST["quantidade"] . "' / pedido.quantidade),
                             quantidade='"   .$_POST["quantidade"]."'
-                            WHERE numero=".$_POST["numero"];
+                            WHERE numero = '" . $_POST["numero"] . "' AND status = 'Pendente'";
         }
         mysqli_query($conn, $sql);
     }
