@@ -3,11 +3,12 @@ CREATE SCHEMA bootsinc;
 USE bootsinc;
 
 CREATE TABLE produto (
-	codigo INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+	codigo INT NOT NULL PRIMARY KEY,
 	descricao VARCHAR(30) NOT NULL,
 	preco DECIMAL(6,2) NOT NULL,
     tamanho INT UNSIGNED NOT NULL,
-    quantidadeEstoque INT UNSIGNED NOT NULL
+    quantidadeEstoque INT UNSIGNED NOT NULL, 
+    totalVendido DECIMAL(9,2) NOT NULL DEFAULT 0.00
 );
 
 CREATE TABLE cliente (
@@ -25,7 +26,8 @@ CREATE TABLE vendedor (
     endereco VARCHAR(70) NOT NULL,
     salario DECIMAL(6,2) NOT NULL,
     telefone VARCHAR(11) NOT NULL,
-    numVendas INT UNSIGNED DEFAULT 0
+    numVendas INT UNSIGNED DEFAULT 0,
+    totalVendido DECIMAL(9,2) NOT NULL DEFAULT 0.00
 );
 
 CREATE TABLE caixa (
@@ -76,79 +78,3 @@ CREATE TABLE venda (
     ON DELETE RESTRICT
     ON UPDATE RESTRICT
 );
-
-/*
-
--- Calcula valor do pedido
-DELIMITER //
-CREATE TRIGGER valorPedido
-AFTER INSERT ON pedido
-FOR EACH ROW
-BEGIN
-	UPDATE pedido P, produto S
-	SET p.valor = p.valor + NEW.quantidade * S.preco
-	WHERE S.codigo = NEW.codProduto;
-END //
-DELIMITER ;
-
--- Baixar estoque após uma venda ser efetuada
-DELIMITER //
-CREATE TRIGGER baixarEstoque
-AFTER INSERT ON pedido
-FOR EACH ROW
-BEGIN
-	UPDATE produto P
-	SET P.quantidadeEstoque = P.quantidadeEstoque - NEW.quantidade
-	WHERE P.codProduto = NEW.idProduto;
-END //
-DELIMITER ;
-
--- Aumenta o estoque após excluir um pedido
-DELIMITER //
-CREATE TRIGGER reporEstoque
-AFTER DELETE ON pedido
-FOR EACH ROW
-BEGIN
-	UPDATE produto P
-	SET P.quantidadeEstoque = P.quantidadeEstoque + OLD.quantidade
-	WHERE P.codProduto = OLD.idProduto;
-END //
-DELIMITER ;
-
--- Aumenta compras de cliente
-DELIMITER //
-CREATE TRIGGER aumentaCompraCliente
-AFTER INSERT ON venda
-FOR EACH ROW
-BEGIN
-	UPDATE cliente C
-    SET C.numCompras = C.numCompras + 1
-	WHERE C.cpf = NEW.cpfCliente;
-END //
-DELIMITER ;
-
--- Aumenta compras de cliente
-DELIMITER //
-CREATE TRIGGER aumentaVendaVendedor
-AFTER INSERT ON venda
-FOR EACH ROW
-BEGIN
-	UPDATE Vendedor V
-    SET V.numVendas = V.numVendas + 1
-	WHERE V.cpf = NEW.cpfVendedor;
-END //
-DELIMITER ;
-
--- Efetuar uma venda confirma o pedido
-DELIMITER //
-CREATE TRIGGER fecharPedido
-AFTER INSERT ON venda
-FOR EACH ROW
-BEGIN
-	UPDATE Pedido P
-	SET P.statusPedido = "Confirmado"
-	WHERE P.idPedido = NEW.idPedido;
-END //
-DELIMITER ;
-
-*/

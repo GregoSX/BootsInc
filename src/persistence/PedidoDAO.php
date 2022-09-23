@@ -1,6 +1,6 @@
 <?php
 
-include 'ProdutoDAO.php';
+include_once 'ProdutoDAO.php';
 
 class PedidoDAO {
     function __construct() {}
@@ -11,12 +11,55 @@ class PedidoDAO {
                 $pedido->getQuantidade() . ");";
         $res = $conn->query($sql);
         $this->calcularValor($pedido, $conn);
+        $this->decrementarQuantidadeProduto($pedido, $conn);
+        return $res;
+    }
+
+
+    function decrementarQuantidadeProduto($pedido, $conn) {
+        $sql = "UPDATE produto p " .
+               "SET p.quantidadeEstoque = p.quantidadeEstoque - '" . $pedido->getQuantidade() . "'" .
+               "WHERE p.codigo = '" . $pedido->getCodProduto() . "'";
+        $res = $conn->query($sql);
+        return $res;
+    }
+
+    function getCodProduto($numero, $conn) {
+        $codigo = 0;
+        $pedidodao = new pedidoDAO();
+        $res = $pedidodao->listarPedido($conn);
+        while($linha = $res->fetch_assoc()) {
+            if ($linha['numero'] == $numero){
+                $codigo = $linha['codProduto'];
+            }
+        }
+        return $codigo;
+    }
+
+    function getQuantidadePedida($numero, $conn) {
+        $quantidade = 0;
+        $pedidodao = new pedidoDAO();
+        $res = $pedidodao->listarPedido($conn);
+        while($linha = $res->fetch_assoc()) {
+            if ($linha['numero'] == $numero){
+                $quantidade = $linha['quantidade'];
+            }
+        }
+        return $quantidade;
+    }
+
+    function incrementarQuantidadeProduto($numero, $conn) {
+        $codigo = $this-> getCodProduto($numero, $conn);
+        $quantidade = $this->getQuantidadePedida($numero, $conn);
+        $sql = "UPDATE produto p " .
+               "SET p.quantidadeEstoque = p.quantidadeEstoque + '" . $quantidade . "' " .
+               "WHERE p.codigo = '" . $codigo . "'";
+        $res = $conn->query($sql);
         return $res;
     }
 
     function calcularValor($pedido, $conn) {
         $preco = $this->getPrecoProduto($pedido, $conn);
-        echo($preco);
         $sql = "UPDATE pedido p, produto s " .
                "SET p.valor = p.quantidade * '" . $preco . "' " .
                "WHERE p.codProduto = '" . $pedido->getCodProduto() . "'";
@@ -43,6 +86,7 @@ class PedidoDAO {
     }
 
     function excluirPedido($numero, $conn) {
+        $this->incrementarQuantidadeProduto($numero, $conn);
         $sql = "DELETE FROM pedido WHERE numero = $numero";
         $res = $conn->query($sql);
         return $res;
