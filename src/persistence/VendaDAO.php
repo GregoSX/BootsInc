@@ -10,16 +10,17 @@ class VendaDAO {
     function __construct() {}
 
     function salvar($venda, $conn) {
-        $sql = "INSERT INTO venda (numPedido, cpfVendedor, cpfCliente, desconto) VALUES ('" .
+        $sql = "INSERT INTO venda (numPedido, cpfVendedor, cpfCliente, valorPedido, desconto) VALUES ('" .
                 $venda->getNumPedido() . "', '" .
                 $venda->getCpfVendedor() . "', '" .
                 $venda->getCpfCliente() . "', '" .
+                $this->getValorPedido($venda, $conn) . "', '" .
                 $venda->getDesconto() . "')";
         $res = $conn->query($sql);
         $this->efetivarPedido($venda, $conn);
         $this->incrementarCompraCliente($venda, $conn);
         $this->incrementarVendaVendedor($venda, $conn);
-        $this->calcularValor($venda, $conn);
+        $this->calcularValorVenda($venda, $conn);
         return $res;
     }
 
@@ -53,21 +54,21 @@ class VendaDAO {
     }
 
     function getValorPedido($venda, $conn) {
-        $valor = 0;
+        $valorPedido = 0;
         $pedidodao = new PedidoDAO();
         $res = $pedidodao->listarPedido($conn);
         while($linha = $res->fetch_assoc()) {
             if ($linha['numero'] == $venda->getNumPedido()){
-                $valor = $linha['valor'];
+                $valorPedido = $linha['valor'];
             }
         }
-        return $valor;
+        return $valorPedido;
     }
 
-    function calcularValor($venda, $conn) {
-        $valor = $this->getValorPedido($venda, $conn);
+    function calcularValorVenda($venda, $conn) {
+        $valorPedido = $this->getValorPedido($venda, $conn);
         $sql = "UPDATE venda v, pedido p " .
-               "SET v.valor = p.valor - p.valor * 0.01 * '" .
+               "SET v.valorVenda = v.valorPedido - v.valorPedido * 0.01 * '" .
                     $venda->getDesconto() . "' " .
                "WHERE p.numero = '" . $venda->getnumPedido() . "'";
         $res = $conn->query($sql);
@@ -151,11 +152,11 @@ class VendaDAO {
         $sql = "SELECT numero FROM venda WHERE numero=".$_POST["numero"];
         $result = mysqli_query($conn, $sql);
             if(mysqli_num_rows($result)!=0){
-                $sql = "UPDATE venda
-                        SET
-                            valor = valor * ('" . $_POST["desconto"] . "' / venda.desconto),
-                            desconto='" . $_POST["desconto"] . "'
-                        WHERE numero = '" . $_POST["numero"] . "'";
+                    $sql = "UPDATE venda
+                    SET
+                        valorVenda = venda.valorPedido - venda.valorPedido * 0.01 * '" . $_POST["desconto"] . "',
+                        desconto='" . $_POST["desconto"] . "'
+                    WHERE numero = '" . $_POST["numero"] . "'";
         }
         mysqli_query($conn, $sql);
     }

@@ -49,7 +49,7 @@ include_once '../../persistence/VendaDAO.php';
         </td>
         <tr><td width="20%">Valor:</td>
             <td colspan="2" width="90%">
-            <input type="number" step="0.01" min="0.01" max="9999.99" name="valor" value="<?php echo @$vetor['valor']; ?>" size=auto disabled>
+            <input type="number" step="0.01" min="0.01" max="9999.99" name="valorPedido" value="<?php echo @$vetor['valorPedido']; ?>" size=auto disabled>
         </td>
         <tr><td colspan="3" align="center" class="buttons">
             <input type="submit" value="Salvar">

@@ -55,8 +55,9 @@ CREATE TABLE pedido (
 CREATE TABLE venda (
     numero INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
     numPedido INT UNSIGNED NOT NULL,
-    valor DECIMAL(6,2) NOT NULL DEFAULT 0.00,
+    valorPedido DECIMAL(9,2) NOT NULL DEFAULT 0.00,
     desconto INT UNSIGNED NOT NULL,
+    valorVenda DECIMAL(9,2) NOT NULL DEFAULT 0.00,
     cpfCliente CHAR(11) NOT NULL,
     cpfVendedor CHAR(11) NOT NULL,
 

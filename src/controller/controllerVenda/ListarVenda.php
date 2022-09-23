@@ -34,8 +34,9 @@ if($res->num_rows == 0) {
                     <th width="9%" style="text-align:center;"> Número do Pedido </th>
                     <th width="9%" style="text-align:center;"> CPF Vendedor </th>
                     <th width="9%" style="text-align:center;"> CPF Cliente </th>
+                    <th width="9%" style="text-align:center;"> Valor do Pedido </th>
                     <th width="9%" style="text-align:center;"> Desconto (%) </th>
-                    <th width="9%" style="text-align:center;"> Valor </th>
+                    <th width="9%" style="text-align:center;"> Valor da Venda </th>
                     <th width="9%" style="text-align:center;"> Opções </th>
                 </tr>
 <?php
@@ -46,8 +47,9 @@ if($res->num_rows == 0) {
                     <td> <?php echo $linha['numPedido'];?> </td>
                     <td> <?php echo $linha['cpfVendedor']; ?>  </td>
                     <td> <?php echo $linha['cpfCliente']; ?>  </td>
+                    <td> <?php echo $linha['valorPedido'];?> </td>
                     <td> <?php echo $linha['desconto'];?> </td>
-                    <td> <?php echo $linha['valor'];?> </td>
+                    <td> <?php echo $linha['valorVenda'];?> </td>
                     <td style="text-align:center;">
                         <input type="button" value="Editar" onclick="location.href='EditarVenda.php?numero=<?php echo $linha['numero'] ?>'">
                         <input type="button" value="Excluir" onclick="location.href='ExcluirVenda.php?numero=<?php echo $linha['numero'] ?>'">
