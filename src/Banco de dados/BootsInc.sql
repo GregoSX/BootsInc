@@ -42,7 +42,7 @@ CREATE TABLE pedido (
     numero INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
     codProduto INT NOT NULL,
     quantidade INT UNSIGNED,
-    valor DECIMAL(6,2) NOT NULL DEFAULT 0.00,
+    valor DECIMAL(9,2) NOT NULL DEFAULT 0.00,
     status VARCHAR(11) NOT NULL DEFAULT "Pendente",
 
     CONSTRAINT fk_produto
@@ -76,3 +76,18 @@ CREATE TABLE venda (
     ON DELETE RESTRICT
     ON UPDATE RESTRICT
 );
+
+-- Exemplos --
+
+/*
+
+INSERT INTO vendedor (cpf, primeiroNome, sobrenome, endereco, salario, telefone)
+VALUES ('12345678910', 'Nathan', 'Patrocinio', 'Jardim Aeroporto', 2000.00, 3599998888);
+
+INSERT INTO cliente (cpf, primeiroNome, sobrenome, endereco)
+VALUES ('47474747474', 'Lucas', 'Pinheiro', 'Texas 10');
+
+INSERT INTO produto (codigo, descricao, preco, tamanho)
+VALUES ('123', 'Tênis Nike Masculino', 300.00, 40);
+
+*/ 
