@@ -30,10 +30,10 @@ if($res->num_rows == 0) {
 
 ?>
                 <tr border="1" frame="hsides" rules="rows" bgcolor='#D2691E;'>
-                    <th width="9%" style="text-align:center;"> ID Pedido </th>
-                    <th width="9%" style="text-align:center;"> ID Produto </th>
+                    <th width="9%" style="text-align:center;"> Número do Pedido </th>
+                    <th width="9%" style="text-align:center;"> Código do Produto </th>
                     <th width="9%" style="text-align:center;"> Quantidade </th>
-                    <th width="9%" style="text-align:center;"> Preço Vendido </th>
+                    <th width="9%" style="text-align:center;"> Valor da Venda </th>
                     <th width="9%" style="text-align:center;"> Status Pedido </th>
                     <th width="9%" style="text-align:center;"> Opções </th>
                 </tr>

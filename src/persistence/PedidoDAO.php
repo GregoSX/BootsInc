@@ -1,5 +1,7 @@
 <?php
 
+include 'ProdutoDAO.php';
+
 class PedidoDAO {
     function __construct() {}
 
@@ -8,7 +10,30 @@ class PedidoDAO {
                 $pedido->getCodProduto() . "', " .
                 $pedido->getQuantidade() . ");";
         $res = $conn->query($sql);
+        $this->calcularValor($pedido, $conn);
         return $res;
+    }
+
+    function calcularValor($pedido, $conn) {
+        $preco = $this->getPrecoProduto($pedido, $conn);
+        echo($preco);
+        $sql = "UPDATE pedido p, produto s " .
+               "SET p.valor = p.quantidade * '" . $preco . "' " .
+               "WHERE p.codProduto = '" . $pedido->getCodProduto() . "'";
+        $res = $conn->query($sql);
+        return $res;
+    }
+
+    function getPrecoProduto($pedido, $conn) {
+        $preco = 0;
+        $produtodao = new ProdutoDAO();
+        $res = $produtodao->listarProduto($conn);
+        while($linha = $res->fetch_assoc()) {
+            if ($linha['codigo'] == $pedido->getCodProduto()){
+                $preco = $linha['preco'];
+            }
+        }
+        return $preco;
     }
 
     function listarPedido($conn) {
